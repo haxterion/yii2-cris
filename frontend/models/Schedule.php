@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "schedule".
  *
- * @property int $id
+ * @property int $id_schedule
  * @property int $id_booking
  * @property int $id_vehicle
  *
@@ -44,7 +44,7 @@ class Schedule extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id_schedule' => 'Id Schedule',
             'id_booking' => 'Id Booking',
             'id_vehicle' => 'Id Vehicle',
         ];
@@ -55,7 +55,7 @@ class Schedule extends \yii\db\ActiveRecord
      */
     public function getBookingOrders()
     {
-        return $this->hasMany(BookingOrder::className(), ['name_driver' => 'id']);
+        return $this->hasMany(BookingOrder::className(), ['name_driver' => 'id_schedule']);
     }
 
     /**
@@ -63,7 +63,7 @@ class Schedule extends \yii\db\ActiveRecord
      */
     public function getBookingOrders0()
     {
-        return $this->hasMany(BookingOrder::className(), ['vehicle' => 'id']);
+        return $this->hasMany(BookingOrder::className(), ['vehicle' => 'id_schedule']);
     }
 
     /**
