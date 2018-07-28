@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use frontend\models\Guestbook;
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\GuestbookSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -11,6 +11,7 @@ $this->title = 'Guestbook';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="guestbook-index">
+
     <!-- <h1><?= Html::encode($this->title) ?></h1> -->
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
