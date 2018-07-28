@@ -13,6 +13,18 @@ return [
         ],
     ],
     'components' => [
+        'formatter' => [
+               'class' => 'yii\i18n\Formatter',
+               'dateFormat' => 'd-M-Y',
+               'datetimeFormat' => 'Y-MM-d H:i:s',
+               'timeFormat' => 'H:i:s', 
+               'locale' => 'id-ID', //your language locale
+               'defaultTimeZone' => 'UTC', // time zone  
+               'timeZone' => 'Asia/Jakarta',
+               'thousandSeparator' => ',',
+               'decimalSeparator' => '.',
+               'currencyCode' => '$'
+           ],        
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
              // or use 'yii\rbac\DbManager'
