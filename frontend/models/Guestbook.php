@@ -70,7 +70,14 @@ class Guestbook extends \yii\db\ActiveRecord
             'person_name' => 'Person Name',
         ];
     }
-
+    
+    public function hariini()
+    {
+        $expression = new \yii\db\Expression('NOW()');
+        $datenow = (new \yii\db\Query())->select($expression)->scalar(); 
+        return $datenow;        
+    }
+    
     /**
      * @return \yii\db\ActiveQuery
      */
