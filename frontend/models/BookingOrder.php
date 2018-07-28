@@ -49,15 +49,15 @@ class BookingOrder extends \yii\db\ActiveRecord
     {
         return [
             [['packet', 'price', 'id_user'], 'integer'],
-            [['name_driver', 'vehicle'], 'string'],
+            // [['name_driver', 'vehicle'], 'string'],
             [['guest_phone'], 'number'],
             [['first_date', 'last_date', 'date_input', 'date_transaksi'], 'safe'],
             [['id_guestbook', 'guest_name'], 'string', 'max' => 200],
             [['address'], 'string', 'max' => 250],
             [['origin', 'destination', 'person_name'], 'string', 'max' => 100],
             [['id_guestbook'], 'exist', 'skipOnError' => true, 'targetClass' => Guestbook::className(), 'targetAttribute' => ['id_guestbook' => 'id']],
-            [['name_driver'], 'exist', 'skipOnError' => true, 'targetClass' => Schedule::className(), 'targetAttribute' => ['name_driver' => 'id']],
-            [['vehicle'], 'exist', 'skipOnError' => true, 'targetClass' => Schedule::className(), 'targetAttribute' => ['vehicle' => 'id']],
+            // [['name_driver'], 'exist', 'skipOnError' => true, 'targetClass' => Schedule::className(), 'targetAttribute' => ['name_driver' => 'id']],
+            // [['vehicle'], 'exist', 'skipOnError' => true, 'targetClass' => Schedule::className(), 'targetAttribute' => ['vehicle' => 'id']],
             [['packet'], 'exist', 'skipOnError' => true, 'targetClass' => Packet::className(), 'targetAttribute' => ['packet' => 'id']],
         ];
     }
