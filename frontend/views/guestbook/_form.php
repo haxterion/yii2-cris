@@ -63,10 +63,7 @@ $model->person_name=$id == '' ? '' : $users ['username'];
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->dropDownList(
-        ArrayHelper::map(Recordguestbook::find()->all(),'id', 'status'),
-        ['prompt'=>'Choose Id Guestbook']
-    )?>
+    <?= $form->field($model, 'status')->radioList(array('Intro'=>'Intro','Deal'=>'Deal')); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
