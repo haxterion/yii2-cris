@@ -218,22 +218,23 @@ class SiteController extends Controller
      * @return mixed
      * @throws BadRequestHttpException
      */
-    public function actionResetPassword($token)
+    public function actionResetPassword()
     {
-        try {
-            $model = new ResetPasswordForm($token);
-        } catch (InvalidParamException $e) {
-            throw new BadRequestHttpException($e->getMessage());
-        }
+
+        $model = new ResetPasswordForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
+            // $user = User::findOne(yii::$app->session->get('__id'));
+            // $user->$password_hash = $user->setPaaword($model->password);
+            // $user->update(false);
+            if($model->resetPassword())
             Yii::$app->session->setFlash('success', 'New password saved.');
-
-            return $this->goHome();
+            return $this->redirect('index');
         }
 
-        return $this->render('resetPassword', [
+        return $this->render('resetpassword', [
             'model' => $model,
         ]);
     }
+
 }
