@@ -1,0 +1,8 @@
+Error
+	1. Name driver dan vehicle invalid
+
+1 	- transaksi ada 2 table : guestbook dan record guestbook.->ketika input guestbook otomatis masuk ke table guestbook dan table guestbook.
+	- id guestbook menjadi acuan untuk menampilkan data record guestbook sesuai id yg sama saja.
+	- record guest book hanya untuk menampilkan histori guestbook.
+2.	- visual invoice view dari table booking order.
+3.	- tambah menu penjadwalan.
