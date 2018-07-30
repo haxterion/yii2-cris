@@ -54,12 +54,14 @@ $users = ArrayHelper::toarray($user);
                         'items' => [
                             ['label' => 'Vehicle', 'icon' => 'car', 'url' => ['/vehicle/index'],],
                             ['label' => 'Driver', 'icon' => 'male', 'url' => ['/driver/index'],],
-                            ['label' => 'Guest Book', 'icon' => 'address-book', 'url' => ['/guestbook/index'],],
-                            ['label' => 'Booking Order', 'icon' => 'book', 'url' => ['/booking-order/index'],],
-                            ['label' => 'Driver', 'icon' => 'male', 'url' => ['/driver/index'],],
                             // ['label' => 'Record Guestbook', 'icon' => 'archive', 'url' => ['/recordguestbook/index'],],
                             ['label' => 'Packet', 'icon' => 'briefcase', 'url' => ['/packet/index'],],
-                            [
+                        ],
+                    ],
+
+                            ['label' => 'Guest Book', 'icon' => 'address-book', 'url' => ['/guestbook/index'],],
+                            ['label' => 'Booking Order', 'icon' => 'book', 'url' => ['/booking-order/index'],],
+                        [
                                 'label' => 'Role',
                                 'icon' => 'list', 
                                 'url' => '#',
@@ -85,8 +87,6 @@ $users = ArrayHelper::toarray($user);
                             ],
                             ['label' => 'Grup Role', 'icon' => 'th', 'url' => ['/debug'],],
                             ['label' => 'Employees', 'icon' => 'user', 'url' => ['/admin/user'],],
-                        ],
-                    ],
                 ],
             ]
         ) ?>
