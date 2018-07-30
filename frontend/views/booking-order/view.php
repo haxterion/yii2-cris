@@ -2,6 +2,12 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\ArrayHelper;
+use frontend\models\Vehicle;
+use frontend\models\Driver;
+use frontend\models\Packet;
+use frontend\models\User;
+use frontend\models\Guestbook;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\BookingOrder */
@@ -9,6 +15,9 @@ use yii\widgets\DetailView;
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Booking Orders', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+// $namedriver = 'name_driver';
+// $name_driver = ArrayHelper::map(frontend/models/Driver::findAll());
+// var_dump(Arrayhelper::map($name_driver, 'id', 'name'));
 ?>
 <div class="booking-order-view">
 
@@ -24,14 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+    
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'id_guestbook',
             'guest_name',
-            'name_driver',
+            [
+                'attribute' => 'name_driver',
+                'value' => $model->name_driver
+            ],
             'guest_phone',
             'address',
             'first_date',

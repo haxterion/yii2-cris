@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use kartik\detail\DetailView;
 use yii\widgets\ActiveForm;
-/*use yii\widgets\Pjax;*/
+use yii\widgets\Pjax;
 use yii\grid\GridView;
 use frontend\models\User;
 use kartik\date\DatePicker;
@@ -17,6 +17,7 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Guestbooks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="guestbook-view">
      <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -49,3 +50,4 @@ $this->params['breadcrumbs'][] = $this->title;
             'person_name',
         ],
     ]) ?>
+</div>
