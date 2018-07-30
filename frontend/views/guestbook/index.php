@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use frontend\models\Guestbook;
+use kartik\daterange\DateRangePicker;
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\GuestbookSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
