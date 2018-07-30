@@ -3,7 +3,7 @@
 namespace frontend\models;
 
 use Yii;
-
+use frontend\models\Driver;
 /**
  * This is the model class for table "booking_order".
  *
@@ -100,6 +100,10 @@ class BookingOrder extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    // public function namedriver()
+    // {
+    //     return $this-> \frontend\models\Driver::findAll();
+    // }
     public function getNameDriver()
     {
         return $this->hasOne(Schedule::className(), ['id' => 'name_driver']);

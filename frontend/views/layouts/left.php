@@ -61,6 +61,7 @@ $users = ArrayHelper::toarray($user);
 
                             ['label' => 'Guest Book', 'icon' => 'address-book', 'url' => ['/guestbook/index'],],
                             ['label' => 'Booking Order', 'icon' => 'book', 'url' => ['/booking-order/index'],],
+                            ['label' => 'Schedule', 'icon' => 'book', 'url' => ['/schedule/index'],],
                         [
                                 'label' => 'Role',
                                 'icon' => 'list', 
