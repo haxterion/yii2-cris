@@ -61,7 +61,7 @@ $model->person_name=$id == '' ? '' : $users ['username'];
     <div class="col-sm-3">
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-6">
     <?= $form->field($model, 'first_date')->widget(
         DatePicker::classname(), [
             'name' => 'check_issue_date',
@@ -75,7 +75,7 @@ $model->person_name=$id == '' ? '' : $users ['username'];
         ]
     );?>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-6">
     <?= $form->field($model, 'last_date')->widget(
         DatePicker::classname(), [
             'name' => 'check_issue_date',
