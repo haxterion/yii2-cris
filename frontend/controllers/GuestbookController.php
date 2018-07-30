@@ -8,6 +8,7 @@ use frontend\models\GuestbookSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use frontend\controllers\RecordguestbookController;
 
 /**
  * GuestbookController implements the CRUD actions for Guestbook model.
@@ -67,9 +68,16 @@ class GuestbookController extends Controller
     public function actionCreate()
     {
         $model = new Guestbook();
+        $model1 = new Recordguestbook();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model1->load(Yii::$app->request->post())) {
+            if($model->save() && $model1->save())
+            // return $this->redirect(['index']);
             return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model, 'model1' => $model1,
+            ]);
         }
 
         return $this->render('create', [

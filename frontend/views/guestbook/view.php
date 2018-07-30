@@ -9,6 +9,8 @@ use frontend\models\User;
 use kartik\date\DatePicker;
 use yii\helpers\ArrayHelper;
 use frontend\models\Guestbook;
+use kartik\daterange\DateRangeBehavior;
+use kartik\daterange\DateRangePicker;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Guestbook */
