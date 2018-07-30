@@ -11,7 +11,6 @@ $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' 
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="booking-order-update">
-<?= $this->render('header');?>
 <br>
 <br>
 <br> 
