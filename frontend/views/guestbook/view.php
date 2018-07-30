@@ -50,7 +50,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'person_name',
         ],
     ]) ?>
-<<<<<<< HEAD
 </div>
 <div class="col-sm-3">
 =======
@@ -64,7 +63,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 $model->person_name=$id == '' ? '' : $users ['username'];
             ?>
     <div class="recordguestbook-form">
->>>>>>> 9450a5444d62ce70e3594179a352cceffe5c7a05
     <?php $form = ActiveForm::begin(); ?>
 
 <div class="row">

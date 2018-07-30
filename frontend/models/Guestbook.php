@@ -58,11 +58,6 @@ class Guestbook extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-<<<<<<< HEAD
-            'id_guestbook' => 'ID Guestbook',
-=======
-            'id_guestbook' => 'ID_Guestbook',
->>>>>>> 9450a5444d62ce70e3594179a352cceffe5c7a05
             'customer' => 'Customer',
             'phone_number' => 'Phone Number',
             'address' => 'Address',
