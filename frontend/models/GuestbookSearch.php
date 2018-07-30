@@ -12,12 +12,29 @@ use frontend\models\Guestbook;
  */
 class GuestbookSearch extends Guestbook
 {
+
+    public $createTimeRange;
+    public $createTimeStart;
+    public $createTimeEnd;
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => DateRangeBehavior::className(),
+                'attribute' => 'createTimeRange',
+                'dateStartAttribute' => 'createTimeStart',
+                'dateEndAttribute' => 'createTimeEnd',
+            ]
+        ];
+    }
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
+            [['createTimeRange'], 'match', 'pattern' => '/^.+\s\-\s.+$/'],
             [['id', 'customer', 'address', 'date_input', 'date_transaksi', 'id_user', 'person_name'], 'safe'],
             [['phone_number'], 'number'],
             [['status'], 'integer'],
@@ -66,6 +83,9 @@ class GuestbookSearch extends Guestbook
             'date_transaksi' => $this->date_transaksi,
             'status' => $this->status,
         ]);
+
+        $query->andFilterWhere(['>=', 'createdAt', $this->createTimeStart])
+                      ->andFilterWhere(['<', 'createdAt', $this->createTimeEnd]);
 
         $query->andFilterWhere(['like', 'id', $this->id])
             ->andFilterWhere(['like', 'customer', $this->customer])

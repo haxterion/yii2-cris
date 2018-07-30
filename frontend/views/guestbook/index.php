@@ -39,5 +39,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
+         [
+            // here we render the widget
+            'filter' => DateRangePicker::widget([
+                'model' => $searchModel,
+                'attribute' => 'datetime_range',
+                'convertFormat'=>true,
+                'pluginOptions'=>[
+                    'timePicker'=>true,
+                    'timePickerIncrement'=>30,
+                    'locale'=>[
+                        'format'=>'Y-m-d h:i A'
+        ]
+    ]
+            
+            ])
+        ]
     ]); ?>
 </div>
