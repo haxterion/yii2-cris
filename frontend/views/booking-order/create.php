@@ -11,13 +11,7 @@ $this->title = 'Create Booking Order';
 $this->params['breadcrumbs'][] = ['label' => 'Booking Orders', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="booking-order-create">
-
-<br>
-<br>
-<br>
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="booking-order-create"><br>
 
     <?= $this->render('_form', [
         'model' => $model,

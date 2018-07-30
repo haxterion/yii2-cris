@@ -21,81 +21,18 @@ $users = ArrayHelper::toarray($user);
 $model->id_user=$id == '' ? '' : $users ['id'];
 $model->person_name=$id == '' ? '' : $users ['username'];
 ?>
+
 <div class="booking-order-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'id_guestbook')->dropDownList(
-        ArrayHelper::map(Guestbook::find()->all(),'id', 'id'),
-        ['prompt'=>'Choose Id Guestbook']
-    ) ?>
-
-    <?= $form->field($model, 'guest_name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'name_driver')->dropDownList(
-        ArrayHelper::map(Driver::find()->all(),'id','name'),
-        ['prompt'=>'Choose Driver']
-    ) ?>
-
-    <?= $form->field($model, 'guest_phone')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'first_date')->widget(
-        DatePicker::classname(), [
-            'name' => 'check_issue_date',
-            'value' => date('d-M-Y', strtotime('+9 days')),
-            'options' => ['placeholder' => 'Pilih Tanggal ...'],
-            'pluginOptions' => [
-                'format' => 'yyyy-mm-dd',
-                'autoclose'=>true,
-                'todayHighlight' => true
-            ]
-        ]
-    );?>
-
-    <?= $form->field($model, 'last_date')->widget(
-        DatePicker::classname(), [
-            'name' => 'check_issue_date',
-            'value' => date('d-M-Y', strtotime('+9 days')),
-            'options' => ['placeholder' => 'Pilih Tanggal ...'],
-            'pluginOptions' => [
-                'format' => 'yyyy-mm-dd',
-                'autoclose'=>true,
-                'todayHighlight' => true
-            ]
-        ]
-    );?>
-
-    <?= $form->field($model, 'vehicle')->dropDownList(
-        ArrayHelper::map(Vehicle::find()->all(),'id','vehicle_type'),
-        ['prompt'=>'Choose Vehicle']
-    ) ?>
-
-    <?= $form->field($model, 'origin')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'destination')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'packet')->dropDownList(
-        ArrayHelper::map(Packet::find()->all(),'id','name'),
-        ['prompt'=>'Choose Packet']
-    ) ?>
-
-    <?= $form->field($model, 'price')->textInput() ?>
-
-    <?= $form->field($model, 'date_today')->widget(
-        DatePicker::classname(), [
-            'name' => 'check_issue_date',
-            'value' => date('d-M-Y', strtotime('+9 days')),
-            'options' => ['placeholder' => 'Pilih Tanggal ...'],
-            'pluginOptions' => [
-                'format' => 'yyyy-mm-dd',
-                'autoclose'=>true,
-                'todayHighlight' => true
-            ]
-        ]
-    );?>
-
+<div class="row">
+        <div class="col-sm-2">
+    <?= $form->field($model, 'id_user')->textInput(['maxlength', 'readOnly' => true]) ?>
+        </div>
+         <div class="col-sm-4">
+    <?= $form->field($model, 'person_name')->textInput(['maxlength', 'readOnly' => true]) ?>
+        </div>
+    <div class="col-sm-6">
     <?= $form->field($model, 'date_input')->widget(
         DatePicker::classname(), [
             'name' => 'check_issue_date',
@@ -108,24 +45,79 @@ $model->person_name=$id == '' ? '' : $users ['username'];
             ]
         ]
     );?>
-
-    <?= $form->field($model, 'date_transaksi')->widget(
+        </div>
+        <div class="col-sm-2">
+    <?= $form->field($model, 'id_guestbook')->dropDownList(
+        ArrayHelper::map(Guestbook::find()->all(),'id', 'id'),
+        ['prompt'=>'Choose Id Guestbook']
+    ) ?>
+        </div>
+        <div class="col-sm-4">
+    <?= $form->field($model, 'guest_name')->textInput(['maxlength' => true]) ?>
+        </div>
+    <div class="col-sm-3">
+        <?= $form->field($model, 'guest_phone')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-3">
+    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-3">
+    <?= $form->field($model, 'first_date')->widget(
         DatePicker::classname(), [
             'name' => 'check_issue_date',
             'value' => date('d-M-Y', strtotime('+9 days')),
             'options' => ['placeholder' => 'Pilih Tanggal ...'],
             'pluginOptions' => [
-                'format' =>'yyyy-mm-dd',
-                'todayHighlight' => true,
-                'autoclose'=> true
+                'format' => 'yyyy-mm-dd',
+                'autoclose'=>true,
+                'todayHighlight' => true
             ]
         ]
     );?>
+    </div>
+    <div class="col-sm-3">
+    <?= $form->field($model, 'last_date')->widget(
+        DatePicker::classname(), [
+            'name' => 'check_issue_date',
+            'value' => date('d-M-Y', strtotime('+9 days')),
+            'options' => ['placeholder' => 'Pilih Tanggal ...'],
+            'pluginOptions' => [
+                'format' => 'yyyy-mm-dd',
+                'autoclose'=>true,
+                'todayHighlight' => true
+            ]
+        ]
+    );?>
+    </div>
 
-    <?= $form->field($model, 'id_user')->textInput(['maxlength', 'readOnly' => true]) ?>
-
-    <?= $form->field($model, 'person_name')->textInput(['maxlength', 'readOnly' => true]) ?>
-
+    <div class="col-sm-3">
+    <?= $form->field($model, 'name_driver')->dropDownList(
+        ArrayHelper::map(Driver::find()->all(),'id','name'),
+        ['prompt'=>'Choose Driver']
+    ) ?>
+    </div>
+    <div class="col-sm-3">
+    <?= $form->field($model, 'vehicle')->dropDownList(
+        ArrayHelper::map(Vehicle::find()->all(),'id','vehicle_type'),
+        ['prompt'=>'Choose Vehicle']
+    ) ?>
+    </div>
+    <div class="col-sm-6">
+    <?= $form->field($model, 'origin')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-6">
+    <?= $form->field($model, 'destination')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-6">
+    <?= $form->field($model, 'packet')->dropDownList(
+        ArrayHelper::map(Packet::find()->all(),'id','name'),
+        ['prompt'=>'Choose Packet']
+    ) ?>
+    </div>
+    <div class="col-sm-6">
+    <?= $form->field($model, 'price')->textInput() ?>
+    </div>
+    </div>
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
