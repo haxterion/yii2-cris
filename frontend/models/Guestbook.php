@@ -32,7 +32,6 @@ class Guestbook extends \yii\db\ActiveRecord
     {
         return 'guestbook';
     }
-
     /**
      * {@inheritdoc}
      */
@@ -59,7 +58,6 @@ class Guestbook extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_guestbook' => 'ID_Guestbook',
             'customer' => 'Customer',
             'phone_number' => 'Phone Number',
             'address' => 'Address',
