@@ -239,7 +239,11 @@ class SiteController extends Controller
 
     // public function actionSchedule()
     // {
+<<<<<<< HEAD
     //     //$model = new Schedule() {
+=======
+    //     $model = new Schedule() {
+>>>>>>> aff4de788228c56fd87f3b29db6dd0695840d8a1
 
 
     // }
