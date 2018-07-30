@@ -237,16 +237,16 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionSchedule()
-    {
-        $model = new Schedule() {
+    // public function actionSchedule()
+    // {
+    //     //$model = new Schedule() {
 
 
-    }
+    // }
 
-    return $this->render('schedule',[
-        'model' => $model,
-        ]);
-    }
+    // return $this->render('schedule',[
+    //     'model' => $model,
+    //     ]);
+    // }
 
 }
