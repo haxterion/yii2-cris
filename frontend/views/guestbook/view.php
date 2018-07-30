@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use kartik\detail\DetailView;
 use yii\widgets\ActiveForm;
-/*use yii\widgets\Pjax;*/
+use yii\widgets\Pjax;
 use yii\grid\GridView;
 use frontend\models\User;
 use kartik\date\DatePicker;
@@ -17,6 +17,7 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Guestbooks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="guestbook-view">
      <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -49,10 +50,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'person_name',
         ],
     ]) ?>
+<<<<<<< HEAD
 </div>
 <div class="col-sm-3">
+=======
+        </div>
+        <div class="col-sm-3">
+            <?php
+                $id = Yii::$app->session->get('__id');
+                $user = User::findOne(['id' => $id]);
+                $users = ArrayHelper::toarray($user);
+                $model->id_user=$id == '' ? '' : $users ['id'];
+                $model->person_name=$id == '' ? '' : $users ['username'];
+            ?>
     <div class="recordguestbook-form">
-
+>>>>>>> 9450a5444d62ce70e3594179a352cceffe5c7a05
     <?php $form = ActiveForm::begin(); ?>
 
 <div class="row">
@@ -114,5 +126,4 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php ActiveForm::end(); ?>
 
 </div>
-     </div>
 </div>

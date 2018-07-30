@@ -34,6 +34,7 @@ class GuestbookController extends Controller
      * Lists all Guestbook models.
      * @return mixed
      */
+
     public function actionIndex()
     {
         $searchModel = new GuestbookSearch();

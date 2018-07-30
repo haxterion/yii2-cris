@@ -32,14 +32,13 @@ class Guestbook extends \yii\db\ActiveRecord
     {
         return 'guestbook';
     }
-
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id'], 'required'],
+            [['id', 'id_guestbook'], 'required'],
             [['phone_number'], 'string', 'max' => 100],
             [['date_input', 'date_transaksi'], 'date', 'format'=>'yyyy-mm-dd'],
             [['status'], 'string', 'min' => 1],
@@ -59,6 +58,11 @@ class Guestbook extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+<<<<<<< HEAD
+            'id_guestbook' => 'ID Guestbook',
+=======
+            'id_guestbook' => 'ID_Guestbook',
+>>>>>>> 9450a5444d62ce70e3594179a352cceffe5c7a05
             'customer' => 'Customer',
             'phone_number' => 'Phone Number',
             'address' => 'Address',
