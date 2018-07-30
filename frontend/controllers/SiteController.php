@@ -237,16 +237,24 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionSchedule()
-    {
-        $model = new Schedule() {
+    // public function actionSchedule()
+    // {
+<<<<<<< HEAD
+    //     $model = new Schedule() {
+=======
+<<<<<<< HEAD
+    //     //$model = new Schedule() {
+=======
+    //     $model = new Schedule() {
+>>>>>>> aff4de788228c56fd87f3b29db6dd0695840d8a1
+>>>>>>> 9837e820ac7ed9afeccf86cb021b8f0a681fa796
 
 
-    }
+    // }
 
-    return $this->render('schedule',[
-        'model' => $model,
-        ]);
-    }
+    // return $this->render('schedule',[
+    //     'model' => $model,
+    //     ]);
+    // }
 
 }

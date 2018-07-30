@@ -15,7 +15,7 @@ use frontend\models\Vehicle;
 
     <?= $form->field($model, 'vehicle')->dropDownList(
         ArrayHelper::map(Vehicle::find()->all(),'id','licence_plat'),
-        ['prompt'=>'Pilih Vehicle']
+        ['prompt'=>'Select licence plat']
     ) ?>
 
     <?= $form->field($model, 'id_booking')->textInput() ?>
