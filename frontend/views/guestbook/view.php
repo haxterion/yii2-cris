@@ -54,6 +54,13 @@ $model1 = new Recordguestbook();
         ],
     ]) ?>
 </div>
+<?php
+$id = Yii::$app->session->get('__id');
+$user = User::findOne(['id' => $id]);
+$users = ArrayHelper::toarray($user);
+$model->id_user=$id == '' ? '' : $users ['id'];
+$model->person_name=$id == '' ? '' : $users ['username'];
+?>
 <div class="recordguestbook-form">
     <?php $form = ActiveForm::begin(); ?>
 
@@ -84,7 +91,6 @@ $model1 = new Recordguestbook();
         <div class="col-sm-3">
     <?= $form->field($model1, 'status')->radioList(array('intro'=>'Intro','nego'=>'Nego' ,'deal'=>'Deal', 'reject'=>'Reject'))?>
         </div>
-
         <div class="col-sm-3">
     <?= $form->field($model1, 'price')->textInput() ?>
         </div>
