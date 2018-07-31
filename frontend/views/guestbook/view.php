@@ -54,7 +54,6 @@ $model1 = new Recordguestbook();
         ],
     ]) ?>
 </div>
-
 <div class="recordguestbook-form">
 
     <?php $form = ActiveForm::begin(); ?>
