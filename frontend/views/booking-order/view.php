@@ -16,7 +16,8 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Booking Orders', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 // $namedriver = 'name_driver';
-// $name_driver = ArrayHelper::map(frontend/models/Driver::findAll());
+// $named=Driver::find(1);
+// $namedriver = (ArrayHelper::map(Driver::find()->all(),'id', 'name'));
 // var_dump(Arrayhelper::map($name_driver, 'id', 'name'));
 ?>
 <div class="booking-order-view">
@@ -24,6 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        <?php
+        // var_dump (if($model){
+        //     echo $model->username;
+        //     echo $model->status;
+        // })
+        ?>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',

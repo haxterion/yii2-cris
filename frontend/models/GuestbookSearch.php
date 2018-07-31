@@ -6,40 +6,19 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use frontend\models\Guestbook;
-use kartik\daterange\DateRangePicker;
-use kartik\daterange\DateRangeBehavior;
 
 /**
  * GuestbookSearch represents the model behind the search form of `frontend\models\Guestbook`.
  */
 class GuestbookSearch extends Guestbook
 {
-
-    public $createTimeRange;
-    public $createTimeStart;
-    public $createTimeEnd;
-
-    public function behaviors()
-    {
-        return [
-            [
-                'class' => DateRangeBehavior::className(),
-                'attribute' => 'createTimeRange',
-                'dateStartAttribute' => 'createTimeStart',
-                'dateEndAttribute' => 'createTimeEnd',
-            ]
-        ];
-    }
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['createTimeRange'], 'match', 'pattern' => '/^.+\s\-\s.+$/'],
-            [['id', 'customer', 'address', 'date_input', 'date_transaksi', 'id_user', 'person_name'], 'safe'],
-            [['phone_number'], 'number'],
-            [['status'], 'integer'],
+            [['id', 'customer', 'phone_number', 'address', 'date_today', 'date_input', 'date_transaksi', 'status', 'id_user', 'person_name'], 'safe'],
         ];
     }
 
@@ -79,19 +58,16 @@ class GuestbookSearch extends Guestbook
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'phone_number' => $this->phone_number,
-            // 'date_today' => $this->date_today,
+            'date_today' => $this->date_today,
             'date_input' => $this->date_input,
             'date_transaksi' => $this->date_transaksi,
-            'status' => $this->status,
         ]);
-
-        $query->andFilterWhere(['>=', 'createdAt', $this->createTimeStart])
-                      ->andFilterWhere(['<', 'createdAt', $this->createTimeEnd]);
 
         $query->andFilterWhere(['like', 'id', $this->id])
             ->andFilterWhere(['like', 'customer', $this->customer])
+            ->andFilterWhere(['like', 'phone_number', $this->phone_number])
             ->andFilterWhere(['like', 'address', $this->address])
+            ->andFilterWhere(['like', 'status', $this->status])
             ->andFilterWhere(['like', 'id_user', $this->id_user])
             ->andFilterWhere(['like', 'person_name', $this->person_name]);
 

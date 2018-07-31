@@ -64,6 +64,7 @@ $model->person_name=$id == '' ? '' : $users ['username'];
             'removeMaskOnSubmit' => true,
             ] 
             ]) ?>
+    </div>
     <div class="col-sm-3">
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
     </div>
