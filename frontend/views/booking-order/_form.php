@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\date\DatePicker;
+use yii\widgets\MaskedInput;
 use frontend\models\Vehicle;
 use frontend\models\Driver;
 use frontend\models\Packet;
@@ -56,8 +57,13 @@ $model->person_name=$id == '' ? '' : $users ['username'];
     <?= $form->field($model, 'guest_name')->textInput(['maxlength' => true]) ?>
         </div>
     <div class="col-sm-3">
-        <?= $form->field($model, 'guest_phone')->textInput(['maxlength' => true]) ?>
-    </div>
+        <?= $form->field($model, 'guest_phone')->widget(
+        MaskedInput::className(),[
+            'mask' => '(+99)999-9999-9999-9',
+            'clientOptions' => [
+            'removeMaskOnSubmit' => true,
+            ] 
+            ]) ?>
     <div class="col-sm-3">
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
     </div>
