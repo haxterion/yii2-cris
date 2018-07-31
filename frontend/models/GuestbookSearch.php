@@ -64,7 +64,7 @@ class GuestbookSearch extends Guestbook
             'date_transaksi' => $this->date_transaksi,
         ]);
 
-<<<<<<< HEAD
+ HEAD
         // $query->andFilterWhere(['>=', 'createdAt', $this->createTimeStart])
         //               ->andFilterWhere(['<', 'createdAt', $this->createTimeEnd]);
 
