@@ -121,12 +121,17 @@ CREATE TABLE `booking_order` (
   KEY `fk_driver_schedule` (`name_driver`),
   KEY `fk_vehicle_schedule` (`vehicle`),
   CONSTRAINT `booking_fk` FOREIGN KEY (`id_guestbook`) REFERENCES `guestbook` (`id`),
-  CONSTRAINT `fk_driver_schedule` FOREIGN KEY (`name_driver`) REFERENCES `schedule` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_vehicle_schedule` FOREIGN KEY (`vehicle`) REFERENCES `schedule` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_driver_schedule` FOREIGN KEY (`name_driver`) REFERENCES `driver` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_vehicle_schedule` FOREIGN KEY (`vehicle`) REFERENCES `vehicle` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `packet_fk` FOREIGN KEY (`packet`) REFERENCES `packet` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `booking_order` */
+
+insert  into `booking_order`(`id`,`id_guestbook`,`guest_name`,`name_driver`,`guest_phone`,`address`,`first_date`,`last_date`,`vehicle`,`origin`,`destination`,`packet`,`price`,`date_today`,`date_input`,`date_transaksi`,`id_user`,`person_name`) values 
+(1,'a1','Sempok',NULL,81,'kediri','2018-07-29','2018-07-30',NULL,'Jekardah','KEDIRI',1,1000000,NULL,'2018-07-29','2018-07-30',1,'rijalimnida'),
+(2,'a1','Cimprut',3,81,'kediri','2018-07-30','2018-07-31',2,'Jekardah','KEDIRI',1,1000000,NULL,'2018-07-30','2018-07-30',1,'rijalimnida'),
+(3,'3','Sempok',1,81,'Kediri','2018-07-30','2018-07-31',2,'Kediri','Jekardah',1,8000,NULL,'2018-07-30',NULL,1,'rijalimnida');
 
 /*Table structure for table `driver` */
 
@@ -162,26 +167,26 @@ CREATE TABLE `guestbook` (
   `date_today` date DEFAULT NULL,
   `date_input` date DEFAULT NULL,
   `date_transaksi` date DEFAULT NULL,
-  `status` int(10) DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL,
   `id_user` varchar(20) DEFAULT NULL,
   `person_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fkstatus` (`status`),
-  CONSTRAINT `fkstatus` FOREIGN KEY (`status`) REFERENCES `record_guestbook` (`id`)
+  KEY `fkstatus` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `guestbook` */
 
 insert  into `guestbook`(`id`,`customer`,`phone_number`,`address`,`date_today`,`date_input`,`date_transaksi`,`status`,`id_user`,`person_name`) values 
-('3','hani','9999999999999','surabaya barat',NULL,NULL,'2018-07-26',3,'1','rijalimnida'),
+('3','hani','9999999999999','surabaya barat',NULL,NULL,'2018-07-26','3','1','rijalimnida'),
 ('a1','aa','85432786777','surabaya',NULL,NULL,'2018-07-25',NULL,'1',''),
 ('A132','vIKYY','9999999999999','sby',NULL,NULL,'2018-07-28',NULL,'1','rijalimnida'),
-('C14','Cee','9999999999999','Jekardah',NULL,NULL,'2018-07-27',3,'1','rijalimnida'),
-('C78','Siapa','6287112010121','Kediri',NULL,NULL,'2018-07-01',3,'1','rijalimnida'),
+('C14','Cee','9999999999999','Jekardah',NULL,NULL,'2018-07-27','3','1','rijalimnida'),
+('C78','Siapa','6287112010121','Kediri',NULL,NULL,'2018-07-01','3','1','rijalimnida'),
 ('f2','fsf','9999999999999','dsfsdf',NULL,NULL,'0000-00-00',NULL,'2','rijalds'),
 ('p001','nama','85432786777','surabaya',NULL,NULL,'2018-07-25',NULL,'1','rijal'),
-('T001','Cimprut','9999999999999','Kediri',NULL,NULL,'2018-07-05',3,'1','rijalimnida'),
-('Z09','Kamal','62971288153181','Malang',NULL,NULL,'2018-07-27',4,'1','rijalimnida');
+('SDA001','Si Dia','2222222244444','Surabaya',NULL,NULL,'2018-07-30','0','1','rijalimnida'),
+('T001','Cimprut','9999999999999','Kediri',NULL,NULL,'2018-07-05','3','1','rijalimnida'),
+('Z09','Kamal','62971288153181','Malang',NULL,NULL,'2018-07-27','4','1','rijalimnida');
 
 /*Table structure for table `maintence` */
 
@@ -248,7 +253,7 @@ CREATE TABLE `record_guestbook` (
   `date_transaksi` date DEFAULT NULL,
   `price` int(20) DEFAULT NULL,
   `explanation` varchar(250) DEFAULT NULL,
-  `status` varchar(20) DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL,
   `id_user` int(10) DEFAULT NULL,
   `person_name` int(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -256,16 +261,11 @@ CREATE TABLE `record_guestbook` (
   KEY `fkrecord2` (`id_user`),
   KEY `fkrecord3` (`status`),
   CONSTRAINT `fkrecord` FOREIGN KEY (`id_guestbook`) REFERENCES `guestbook` (`id`),
-  CONSTRAINT `fkrecord2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  CONSTRAINT `fkrecord2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
+  CONSTRAINT `fkrecord3` FOREIGN KEY (`status`) REFERENCES `guestbook` (`status`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `record_guestbook` */
-
-insert  into `record_guestbook`(`id`,`id_guestbook`,`date_phone`,`date_today`,`date_input`,`date_transaksi`,`price`,`explanation`,`status`,`id_user`,`person_name`) values 
-(2,'a1','2018-07-26',NULL,NULL,'2018-07-26',40000,'nyeh','1',1,0),
-(3,'f2','2018-07-10',NULL,NULL,'2018-07-01',40000,'nyeh lagi','intro',1,0),
-(4,'3','2018-07-31',NULL,NULL,'2018-07-28',300000,'hai','intro',1,0),
-(5,'Z09','2018-07-30',NULL,NULL,'2018-07-29',128,'','intro',1,0);
 
 /*Table structure for table `schedule` */
 
@@ -280,9 +280,12 @@ CREATE TABLE `schedule` (
   KEY `fkvihcle` (`id_vehicle`),
   CONSTRAINT `fkschedule` FOREIGN KEY (`id_booking`) REFERENCES `booking_order` (`id`),
   CONSTRAINT `fkvihcle` FOREIGN KEY (`id_vehicle`) REFERENCES `vehicle` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `schedule` */
+
+insert  into `schedule`(`id`,`id_booking`,`id_vehicle`) values 
+(1,NULL,NULL);
 
 /*Table structure for table `user` */
 
@@ -308,7 +311,7 @@ CREATE TABLE `user` (
 /*Data for the table `user` */
 
 insert  into `user`(`id`,`username`,`auth_key`,`password_hash`,`password_reset_token`,`email`,`status`,`created_at`,`updated_at`,`hakakses`) values 
-(1,'rijalimnida','vd7V5q4NDtoaq6P8-flC9CWLZN5L1Irx','$2y$13$VOFNhON.703vwgrKWH7nk.z6U6Kl5qzx9UIF2cZObwRlX//ewE55O',NULL,'rijalimnida@gmail.com',10,1530622505,1530622505,''),
+(1,'rijalimnida','vd7V5q4NDtoaq6P8-flC9CWLZN5L1Irx','$2y$13$BDnWuG0cmPrv8s46QcIPQup1KcOP1CT/WpFmfkyyXtR7KTGp.ipOW',NULL,'rijalimnida@gmail.com',10,1530622505,1532804266,''),
 (2,'admin','l6s6f-qFkuSHv-Xi2UHYB0wSAp0akY0J','$2y$13$gH.fgcybFhTUvhdrfMBszuZ7s/u0Mh1DP/sb4.JoRtfBpO3eHdakW',NULL,'rijalimnida1@gmail.com',10,1530687655,1530687655,''),
 (3,'adminoka','qXWeDGsGaYcIs3vS1V4H-BiLgA4tNg-j','$2y$13$kI.XF1Wg9eaWy7JmITxQvuxsqNpFJQlBdU2aby1.s7DH9ICrsfl52',NULL,'admin@gmail.com',10,1532401420,1532401420,'');
 

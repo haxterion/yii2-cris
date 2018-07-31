@@ -24,7 +24,6 @@ class GuestbookController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
-                    
                 ],
             ],
         ];
@@ -34,7 +33,6 @@ class GuestbookController extends Controller
      * Lists all Guestbook models.
      * @return mixed
      */
-
     public function actionIndex()
     {
         $searchModel = new GuestbookSearch();

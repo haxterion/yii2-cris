@@ -8,6 +8,7 @@ use frontend\models\User;
 use frontend\models\Recordguestbook;
 use yii\helpers\ArrayHelper;
 use frontend\models\Guestbook;
+use frontend\controllers\RecordguestbookController;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Guestbook */
 /* @var $form yii\widgets\ActiveForm */
@@ -42,7 +43,7 @@ $model->person_name=$id == '' ? '' : $users ['username'];
 
     <div class="row">
      <div class="col-sm-2">
-    <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model,$model1, 'id')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-sm-4">
     <?= $form->field($model, 'customer')->textInput(['maxlength' => true]) ?>
