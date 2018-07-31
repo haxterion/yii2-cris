@@ -55,7 +55,6 @@ $model1 = new Recordguestbook();
     ]) ?>
 </div>
 <div class="recordguestbook-form">
-
     <?php $form = ActiveForm::begin(); ?>
 
 <div class="row">
@@ -79,17 +78,12 @@ $model1 = new Recordguestbook();
         ]);?>
         </div>
         <div class="col-sm-3">
-    <?= $form->field($model1, 'id')->dropDownList(
-        ArrayHelper::map(Guestbook::find()->all(),'id', 'id'),
-        ['prompt'=>'Choose Id']
-    ) ?>
+    <?= $form->field($model, 'id')->textInput(['readOnly'=>true]) ?>
 
     </div>
         <div class="col-sm-3">
     <?= $form->field($model1, 'status')->radioList(array('intro'=>'Intro','nego'=>'Nego' ,'deal'=>'Deal', 'reject'=>'Reject'))?>
         </div>
-
-    </div>
 
         <div class="col-sm-3">
     <?= $form->field($model1, 'price')->textInput() ?>
@@ -99,7 +93,6 @@ $model1 = new Recordguestbook();
         </div>
     <?php ActiveForm::end(); ?>
     <div class="col-sm-3">
->>>>>>> 5a5afb9b8c8b7087c348a82b05359e280ad71a9d
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
         <?= Html::a('Lihat Data', ['/guestbook'], ['class' => 'btn btn-default', 'target' => '_blank']) ?>
