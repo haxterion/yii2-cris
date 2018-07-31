@@ -54,6 +54,13 @@ $model1 = new Recordguestbook();
         ],
     ]) ?>
 </div>
+<?php
+$id = Yii::$app->session->get('__id');
+$user = User::findOne(['id' => $id]);
+$users = ArrayHelper::toarray($user);
+$model->id_user=$id == '' ? '' : $users ['id'];
+$model->person_name=$id == '' ? '' : $users ['username'];
+?>
 <div class="recordguestbook-form">
 
     <?php $form = ActiveForm::begin(); ?>
@@ -88,9 +95,6 @@ $model1 = new Recordguestbook();
         <div class="col-sm-3">
     <?= $form->field($model1, 'status')->radioList(array('intro'=>'Intro','nego'=>'Nego' ,'deal'=>'Deal', 'reject'=>'Reject'))?>
         </div>
-
-    </div>
-
         <div class="col-sm-3">
     <?= $form->field($model1, 'price')->textInput() ?>
         </div>
@@ -99,7 +103,7 @@ $model1 = new Recordguestbook();
         </div>
     <?php ActiveForm::end(); ?>
     <div class="col-sm-3">
->>>>>>> 5a5afb9b8c8b7087c348a82b05359e280ad71a9d
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
         <?= Html::a('Lihat Data', ['/guestbook'], ['class' => 'btn btn-default', 'target' => '_blank']) ?>
