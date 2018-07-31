@@ -52,6 +52,13 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 </div>
+<?php
+$id = Yii::$app->session->get('__id');
+$user = User::findOne(['id' => $id]);
+$users = ArrayHelper::toarray($user);
+$model->id_user=$id == '' ? '' : $users ['id'];
+$model->person_name=$id == '' ? '' : $users ['username'];
+?>
 <div class="recordguestbook-form">
 
     <?php $form = ActiveForm::begin(); ?>
