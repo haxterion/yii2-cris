@@ -3,12 +3,12 @@
 use yii\helpers\Html;
 use kartik\detail\DetailView;
 use yii\widgets\ActiveForm;
-use yii\widgets\Pjax;
 use yii\grid\GridView;
 use frontend\models\User;
 use kartik\date\DatePicker;
 use yii\helpers\ArrayHelper;
 use frontend\models\Guestbook;
+use frontend\models\Recordguestbook;
 use kartik\daterange\DateRangeBehavior;
 use kartik\daterange\DateRangePicker;
 
@@ -18,6 +18,7 @@ use kartik\daterange\DateRangePicker;
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Guestbooks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+$model1 = new Recordguestbook();
 ?>
 
 <div class="guestbook-view">
@@ -53,8 +54,52 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 </div>
+
+<div class="recordguestbook-form">
+
+    <?php $form = ActiveForm::begin(); ?>
+
 <div class="row">
-<?= $this->render('_form1', [
-        'model' => $model,
-    ]) ?>
-</div>    
+        <div class="col-sm-3">
+    <?= $form->field($model, 'id_user')->textInput(['readOnly' => true]) ?>
+        </div>
+        <div class="col-sm-4">
+    <?= $form->field($model, 'person_name')->textInput(['readOnly' => true]) ?>
+        </div>
+        <div class="col-sm-3">
+    <?= $form->field($model1, 'date_transaksi')->widget(
+        DatePicker::className(),[
+            'name' => 'check_issue_date',
+            'value' => date('d-M-Y', strtotime('+2 days')),
+            'options' => ['placeholder' => 'Select Issue date....'],
+            'pluginOptions' => [
+                'format' => 'yyyy-mm-dd',
+                'todayHighlight' => true,
+                'autoclose'=>true
+            ]
+        ]);?>
+        </div>
+        <div class="col-sm-3">
+    <?= $form->field($model1, 'id')->dropDownList(
+        ArrayHelper::map(Guestbook::find()->all(),'id', 'id'),
+        ['prompt'=>'Choose Id']
+    ) ?>
+    </div>
+        <div class="col-sm-3">
+    <?= $form->field($model1, 'status')->radioList(array('intro'=>'Intro','nego'=>'Nego' ,'deal'=>'Deal', 'reject'=>'Reject'))?>
+        </div>
+        <div class="col-sm-3">
+    <?= $form->field($model1, 'price')->textInput() ?>
+        </div>
+        <div class="col-sm-7">
+    <?= $form->field($model1, 'explanation')->textArea(['maxlength' => true]) ?>
+        </div>
+    <?php ActiveForm::end(); ?>
+    <div class="col-sm-3">
+    <div class="form-group">
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Lihat Data', ['/guestbook'], ['class' => 'btn btn-default', 'target' => '_blank']) ?>
+    </div>
+    </div>
+    
+</div>
