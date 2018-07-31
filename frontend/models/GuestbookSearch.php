@@ -64,13 +64,7 @@ class GuestbookSearch extends Guestbook
             'date_transaksi' => $this->date_transaksi,
         ]);
 
-<<<<<<< HEAD
-        // $query->andFilterWhere(['>=', 'createdAt', $this->createTimeStart])
-        //               ->andFilterWhere(['<', 'createdAt', $this->createTimeEnd]);
-
-=======
->>>>>>> 9e3adf2031c9ede255a2babf71cf48b9aa0b4045
-        $query->andFilterWhere(['like', 'id', $this->id])
+       $query->andFilterWhere(['like', 'id', $this->id])
             ->andFilterWhere(['like', 'customer', $this->customer])
             ->andFilterWhere(['like', 'phone_number', $this->phone_number])
             ->andFilterWhere(['like', 'address', $this->address])
