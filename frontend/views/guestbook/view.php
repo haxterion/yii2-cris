@@ -88,11 +88,10 @@ $model->person_name=$id == '' ? '' : $users ['username'];
         ArrayHelper::map(Guestbook::find()->all(),'id', 'id'),
         ['prompt'=>'Choose Id']
     ) ?>
-        
+      
         <div class="col-sm-3">
     <?= $form->field($model, 'status')->radioList(array('intro'=>'Intro','nego'=>'Nego' ,'deal'=>'Deal', 'reject'=>'Reject'))?>
         </div>
-       
     </div>
 
 
