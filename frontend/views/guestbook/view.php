@@ -53,3 +53,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 </div>
+<div class="row">
+<?= $this->render('_form1', [
+        'model' => $model,
+    ]) ?>
+</div>    
