@@ -9,6 +9,7 @@ use Yii;
  * This is the model class for table "guestbook".
  *
  * @property string $id
+ * @property string $id_guestbook
  * @property string $customer
  * @property string $phone_number
  * @property string $address
@@ -68,6 +69,14 @@ class Guestbook extends \yii\db\ActiveRecord
             'id_user' => 'Id User',
             'person_name' => 'Person Name',
         ];
+    }
+
+    public function setIdGuestbook($value){
+        $this->id = $value;
+    }
+
+    public function getIdGuestbook(){
+        return $this->id;
     }
     
     public function hariini()
