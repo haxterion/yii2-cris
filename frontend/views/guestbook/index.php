@@ -36,9 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'date_transaksi',
                 'value'=> 'date_transaksi',
+                'format'=> 'raw',
                 'filter' =>  DatePicker::widget([
                     'model' => $searchModel,
-                    'attribute' => 'date',
+                    'attribute' => 'date_transaksi',
                         'clientOptions' => [
                             'autoclose' => true,
                             'format' => 'yyyy-m-d'

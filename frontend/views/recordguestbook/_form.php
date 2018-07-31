@@ -43,9 +43,9 @@ $model->person_name=$id == '' ? '' : $users ['username'];
         ]);?>
         </div>
         <div class="col-sm-2">
-    <?= $form->field($model, 'id_guestbook')->dropDownList(
+    <?= $form->field($model, 'id')->dropDownList(
         ArrayHelper::map(Guestbook::find()->all(),'id', 'id'),
-        ['prompt'=>'Choose Id Guestbook']
+        ['prompt'=>'Choose Id']
     ) ?>
         </div>
         <div class="col-sm-3">
