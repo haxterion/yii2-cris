@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\GuestbookSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -30,9 +31,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'customer',
             'phone_number',
             'address',
-            'date_today',
+            // 'date_today',
             //'date_input',
-            //'date_transaksi',
+            [
+                'attribute' => 'date_transaksi',
+                'value'=> 'date_transaksi',
+                'filter' =>  DatePicker::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'date',
+                        'clientOptions' => [
+                            'autoclose' => true,
+                            'format' => 'yyyy-m-d'
+                        ]
+                ])
+                        ],
             //'status',
             //'id_user',
             //'person_name',

@@ -43,7 +43,7 @@ $model->person_name=$id == '' ? '' : $users ['username'];
 
     <div class="row">
      <div class="col-sm-2">
-    <?= $form->field($model,$model1, 'id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-sm-4">
     <?= $form->field($model, 'customer')->textInput(['maxlength' => true]) ?>
