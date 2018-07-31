@@ -8,6 +8,7 @@ use frontend\models\User;
 use kartik\date\DatePicker;
 use yii\helpers\ArrayHelper;
 use frontend\models\Guestbook;
+use frontend\models\Recordguestbook;
 use kartik\daterange\DateRangeBehavior;
 use kartik\daterange\DateRangePicker;
 
@@ -17,6 +18,7 @@ use kartik\daterange\DateRangePicker;
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Guestbooks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+$model1 = new Recordguestbook();
 ?>
 
 <div class="guestbook-view">
@@ -52,26 +54,19 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 </div>
-<?php
-$id = Yii::$app->session->get('__id');
-$user = User::findOne(['id' => $id]);
-$users = ArrayHelper::toarray($user);
-$model->id_user=$id == '' ? '' : $users ['id'];
-$model->person_name=$id == '' ? '' : $users ['username'];
-?>
 <div class="recordguestbook-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
 <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
     <?= $form->field($model, 'id_user')->textInput(['readOnly' => true]) ?>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
     <?= $form->field($model, 'person_name')->textInput(['readOnly' => true]) ?>
         </div>
         <div class="col-sm-3">
-    <?= $form->field($model, 'date_transaksi')->widget(
+    <?= $form->field($model1, 'date_transaksi')->widget(
         DatePicker::className(),[
             'name' => 'check_issue_date',
             'value' => date('d-M-Y', strtotime('+2 days')),
@@ -83,23 +78,32 @@ $model->person_name=$id == '' ? '' : $users ['username'];
             ]
         ]);?>
         </div>
-        <div class="col-sm-2">
-    <?= $form->field($model, 'id')->dropDownList(
+        <div class="col-sm-3">
+    <?= $form->field($model1, 'id')->dropDownList(
         ArrayHelper::map(Guestbook::find()->all(),'id', 'id'),
         ['prompt'=>'Choose Id']
     ) ?>
-      
+
+    </div>
         <div class="col-sm-3">
-    <?= $form->field($model, 'status')->radioList(array('intro'=>'Intro','nego'=>'Nego' ,'deal'=>'Deal', 'reject'=>'Reject'))?>
+    <?= $form->field($model1, 'status')->radioList(array('intro'=>'Intro','nego'=>'Nego' ,'deal'=>'Deal', 'reject'=>'Reject'))?>
         </div>
+
     </div>
 
-
-
+        <div class="col-sm-3">
+    <?= $form->field($model1, 'price')->textInput() ?>
+        </div>
+        <div class="col-sm-7">
+    <?= $form->field($model1, 'explanation')->textArea(['maxlength' => true]) ?>
+        </div>
+    <?php ActiveForm::end(); ?>
+    <div class="col-sm-3">
+>>>>>>> 5a5afb9b8c8b7087c348a82b05359e280ad71a9d
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
         <?= Html::a('Lihat Data', ['/guestbook'], ['class' => 'btn btn-default', 'target' => '_blank']) ?>
     </div>
-
-    <?php ActiveForm::end(); ?>
+    </div>
+    
 </div>
