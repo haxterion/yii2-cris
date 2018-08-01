@@ -10,6 +10,7 @@ use frontend\models\Driver;
 use frontend\models\Packet;
 use frontend\models\User;
 use frontend\models\Guestbook;
+use kartik\datetime\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\BookingOrder */
@@ -69,29 +70,18 @@ $model->person_name=$id == '' ? '' : $users ['username'];
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-sm-6">
-    <?= $form->field($model, 'first_date')->widget(
-        DatePicker::classname(), [
-            'name' => 'check_issue_date',
-            'value' => date('d-M-Y', strtotime('+9 days')),
-            'options' => ['placeholder' => 'Pilih Tanggal ...'],
-            'pluginOptions' => [
-                'format' => 'yyyy-mm-dd',
-                'autoclose'=>true,
-                'todayHighlight' => true
+    <?= $form->field($model, 'first_date')->widget(DateTimePicker::classname(), [
+	'options' => ['placeholder' => 'Enter event time ...'],
+	'pluginOptions' => [
+		'autoclose' => true
             ]
-        ]
-    );?>
+        ]);?>
     </div>
     <div class="col-sm-6">
-    <?= $form->field($model, 'last_date')->widget(
-        DatePicker::classname(), [
-            'name' => 'check_issue_date',
-            'value' => date('d-M-Y', strtotime('+9 days')),
-            'options' => ['placeholder' => 'Pilih Tanggal ...'],
-            'pluginOptions' => [
-                'format' => 'yyyy-mm-dd',
-                'autoclose'=>true,
-                'todayHighlight' => true
+    <?= $form->field($model, 'last_date')->widget(DateTimePicker::classname(), [
+	'options' => ['placeholder' => 'Enter event time ...'],
+	'pluginOptions' => [
+		'autoclose' => true
             ]
         ]
     );?>

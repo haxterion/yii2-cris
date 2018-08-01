@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\Guestbook;
+use frontend\models\Recordguestbook;
 use frontend\models\GuestbookSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -65,8 +66,10 @@ class GuestbookController extends Controller
     public function actionCreate()
     {
         $model = new Guestbook();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $modelr = $model;
+        $modelr = new Recordguestbook();
+        if ($modelr->load(Yii::$app->request->post()) && $modelr->save() &&
+            $model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
