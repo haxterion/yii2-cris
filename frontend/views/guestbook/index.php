@@ -10,6 +10,7 @@ use dosamigos\datepicker\DatePicker;
 
 $this->title = 'Guestbooks';
 $this->params['breadcrumbs'][] = $this->title;
+$data='3';
 ?>
 <div class="guestbook-index">
 

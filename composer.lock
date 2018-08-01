@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4668d38ec2db89f5646149a3f30db71",
+    "content-hash": "d4613d045c677c6abd61c83f8d1221c2",
     "packages": [
         {
             "name": "2amigos/yii2-date-picker-widget",
@@ -891,6 +891,59 @@
                 "yii2"
             ],
             "time": "2018-02-07T11:48:00+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-grid",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-grid.git",
+                "reference": "1d6c7d4bbe587702a7dd74fb2d982490f16e5857"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/1d6c7d4bbe587702a7dd74fb2d982490f16e5857",
+                "reference": "1d6c7d4bbe587702a7dd74fb2d982490f16e5857",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-dialog": "~1.0",
+                "kartik-v/yii2-krajee-base": "~1.7"
+            },
+            "suggest": {
+                "kartik-v/yii2-mpdf": "For exporting grids to PDF"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\grid\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Yii 2 GridView on steroids. Various enhancements and utilities for the Yii 2.0 GridView widget.",
+            "homepage": "https://github.com/kartik-v/yii2-grid",
+            "keywords": [
+                "extension",
+                "grid",
+                "widget",
+                "yii2"
+            ],
+            "time": "2018-07-20T13:57:00+00:00"
         },
         {
             "name": "kartik-v/yii2-helpers",
@@ -4043,7 +4096,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "kartik-v/yii2-widget-datepicker": 20,
-        "deesoft/yii2-console": 20
+        "deesoft/yii2-console": 20,
+        "kartik-v/yii2-grid": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

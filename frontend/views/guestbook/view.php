@@ -1,5 +1,6 @@
 <?php
 
+use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use kartik\detail\DetailView;
 use yii\widgets\ActiveForm;
@@ -105,4 +106,20 @@ $model->person_name=$id == '' ? '' : $users ['username'];
     </div>
     </div>
     
+</div>
+<div class="row">
+<?php
+$model = Recordguestbook::find();
+$dataProvider = new ActiveDataProvider([
+    'query' => $model,
+    'pagination' => [
+        'pageSize' => 10
+    ]
+]);;
+?>
+<?=
+ GridView::widget([
+  'dataProvider' => $dataProvider
+ ])
+?>
 </div>
