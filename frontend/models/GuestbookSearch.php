@@ -70,10 +70,7 @@ class GuestbookSearch extends Guestbook
 
 
         $query->andFilterWhere(['like', 'id', $this->id])
-
-       $query->andFilterWhere(['like', 'id', $this->id])
             ->andFilterWhere(['like', 'customer', $this->customer])
-            ->andFilterWhere(['like', 'phone_number', $this->phone_number])
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'status', $this->status])
             ->andFilterWhere(['like', 'id_user', $this->id_user])
