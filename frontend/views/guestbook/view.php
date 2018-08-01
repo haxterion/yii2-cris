@@ -107,11 +107,12 @@ $model->person_name=$id == '' ? '' : $users ['username'];
     </div>
     
 </div>
-<div class="row">
+<div class="col-sm-12">
 <?php
 $model = Recordguestbook::find();
 $dataProvider = new ActiveDataProvider([
-    'query' => $model,
+    'query' => $model->(Yii::$app->db->createCommand('SELECT * FROM post WHERE id=1')
+    ->queryOne()),
     'pagination' => [
         'pageSize' => 10
     ]
