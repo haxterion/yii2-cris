@@ -40,7 +40,7 @@ class Recordguestbook extends \yii\db\ActiveRecord
         return [
             [['date_phone', 'date_today', 'date_input', 'date_transaksi'], 'safe'],
             [['price', 'id_user'], 'integer'],
-            [['status'], 'string', 'min' => 1],
+            [['status'], 'string'],
             [['id_guestbook'], 'string', 'max' => 10],
             [['person_name'], 'string', 'max' => 100],
             [['explanation'], 'string', 'max' => 250],

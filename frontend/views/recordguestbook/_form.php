@@ -42,6 +42,7 @@ $model->person_name=$id == '' ? '' : $users ['username'];
             ]
         ]);?>
         </div>
+        
         <div class="col-sm-2">
     <?= $form->field($model, 'id')->dropDownList(
         ArrayHelper::map(Guestbook::find()->all(),'id', 'id'),

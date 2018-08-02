@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model frontend\models\Recordguestbook */
 
 $this->title = 'Create Recordguestbook';
-$this->params['breadcrumbs'][] = ['label' => 'Recordguestbooks', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Recordguestbook', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="recordguestbook-create">
