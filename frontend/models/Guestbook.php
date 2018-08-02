@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 use frontend\controllers\GuestbookController;
+use yii\db\ActiveQuery;
 
 use Yii;
 
@@ -19,10 +20,10 @@ use Yii;
  * @property int $status
  * @property string $id_user
  * @property string $person_name
- *
- * @property BookingOrder[] $bookingOrders
- * @property RecordGuestbook $status0
- * @property RecordGuestbook[] $recordGuestbooks
+//  *
+//  * @property BookingOrder[] $bookingOrders
+//  * @property RecordGuestbook $status0
+//  * @property RecordGuestbook[] $recordGuestbooks
  */
 class Guestbook extends \yii\db\ActiveRecord
 {

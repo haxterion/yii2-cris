@@ -1,5 +1,6 @@
 <?php
 
+use yii\db\Query;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use kartik\detail\DetailView;
@@ -10,6 +11,7 @@ use kartik\date\DatePicker;
 use yii\helpers\ArrayHelper;
 use frontend\models\Guestbook;
 use frontend\models\Recordguestbook;
+use frontend\models\RecordguestbookSearch;
 use kartik\daterange\DateRangeBehavior;
 use kartik\daterange\DateRangePicker;
 
@@ -109,17 +111,19 @@ $model->person_name=$id == '' ? '' : $users ['username'];
 </div>
 <div class="col-sm-12">
 <?php
+// $query = (new Query())->from('record_guestbook')->where(['id_guestbook' => 1]);
+// $searchModel = new RecordguestbookSearch();
+// $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 $model = Recordguestbook::find();
 $dataProvider = new ActiveDataProvider([
-    'query' => $model,
+    'query'=> $model,
     'pagination' => [
         'pageSize' => 10
     ]
-]);;
+]);
 ?>
-<?=
- GridView::widget([
-  'dataProvider' => $dataProvider
- ])
+<?= GridView::widget([
+    'dataProvider' => $dataProvider
+])
 ?>
 </div>
