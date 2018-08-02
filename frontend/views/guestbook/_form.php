@@ -42,10 +42,10 @@ $model->person_name=$id == '' ? '' : $users ['username'];
     </div>
 
     <div class="row">
-     <div class="col-sm-2">
+     <!-- <div class="col-sm-2">
     <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
-    </div>
-    <div class="col-sm-4">
+    </div> -->
+    <div class="col-sm-6">
     <?= $form->field($model, 'customer')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-sm-4">
@@ -69,7 +69,7 @@ $model->person_name=$id == '' ? '' : $users ['username'];
             ]
         ])?>
     </div>  
-    <div class="col-sm-4">
+    <div class="col-sm-6">
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
     </div>
     </div>

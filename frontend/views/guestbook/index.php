@@ -28,7 +28,7 @@ $data='3';
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             'customer',
             'phone_number',
             'address',

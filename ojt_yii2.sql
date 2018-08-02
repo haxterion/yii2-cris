@@ -98,7 +98,7 @@ DROP TABLE IF EXISTS `booking_order`;
 
 CREATE TABLE `booking_order` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
-  `id_guestbook` varchar(200) DEFAULT NULL,
+  `id_guestbook` int(10) DEFAULT NULL,
   `guest_name` varchar(200) DEFAULT NULL,
   `name_driver` int(20) DEFAULT NULL,
   `guest_phone` varchar(15) DEFAULT NULL,
@@ -116,27 +116,27 @@ CREATE TABLE `booking_order` (
   `id_user` int(20) DEFAULT NULL,
   `person_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `booking_fk` (`id_guestbook`),
   KEY `packet_fk` (`packet`),
   KEY `fk_driver_schedule` (`name_driver`),
   KEY `fk_vehicle_schedule` (`vehicle`),
-  CONSTRAINT `booking_fk` FOREIGN KEY (`id_guestbook`) REFERENCES `guestbook` (`id`),
+  KEY `fkguestbook1` (`id_guestbook`),
   CONSTRAINT `fk_driver_schedule` FOREIGN KEY (`name_driver`) REFERENCES `driver` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_vehicle_schedule` FOREIGN KEY (`vehicle`) REFERENCES `vehicle` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fkguestbook1` FOREIGN KEY (`id_guestbook`) REFERENCES `guestbook` (`id`),
   CONSTRAINT `packet_fk` FOREIGN KEY (`packet`) REFERENCES `packet` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 /*Data for the table `booking_order` */
 
 insert  into `booking_order`(`id`,`id_guestbook`,`guest_name`,`name_driver`,`guest_phone`,`address`,`first_date`,`last_date`,`vehicle`,`origin`,`destination`,`packet`,`price`,`date_today`,`date_input`,`date_transaksi`,`id_user`,`person_name`) values 
-(1,'a1','Sempok',NULL,'81','kediri','2018-07-29 00:00:00','2018-07-30 00:00:00',NULL,'Jekardah','KEDIRI',1,1000000,NULL,'2018-07-29','2018-07-30',1,'rijalimnida'),
-(2,'a1','Cimprut',3,'81','kediri','2018-07-30 00:00:00','2018-07-31 00:00:00',2,'Jekardah','KEDIRI',1,1000000,NULL,'2018-07-30','2018-07-30',1,'rijalimnida'),
-(3,'3','Sempok',1,'81','Kediri','2018-07-30 00:00:00','2018-07-31 00:00:00',2,'Kediri','Jekardah',1,8000,NULL,'2018-07-30',NULL,1,'rijalimnida'),
-(4,'3','Rijal',2,NULL,'kediri','2018-08-01 00:00:00','2018-08-01 00:00:00',2,'Jekardah','Merauke',1,2000,NULL,'2018-07-10',NULL,1,'rijalimnida'),
-(5,'a1','Kamal',1,'9999999999999','kediri','2018-08-01 00:00:00','2018-08-02 00:00:00',2,'Jekardah','Kediri',1,60000,NULL,'2018-07-31',NULL,1,'rijalimnida'),
-(6,'a1','Rizla',1,'62817181626718','Ngagel','2018-08-01 14:00:00','2018-08-02 17:00:00',2,'Jekardah','KEDIRI',1,60000,NULL,'2018-08-01',NULL,1,'rijalimnida'),
-(7,'a1','Kemal',2,'62896152718191','Kediri','2018-08-01 06:00:00','2018-08-02 12:00:00',2,'Kediri','Kediri',1,1000000,NULL,'2018-08-01',NULL,1,'rijalimnida'),
-(8,'3','tertretfrr',2,'98797576456436','fgdxhgfjuf','2018-08-01 15:15:00','2018-08-04 15:10:00',2,'fgsdghdf','fdahrdhsgd',1,400000,NULL,'2018-08-01',NULL,1,'rijalimnida');
+(1,NULL,'Sempok',NULL,'81','kediri','2018-07-29 00:00:00','2018-07-30 00:00:00',NULL,'Jekardah','KEDIRI',1,1000000,NULL,'2018-07-29','2018-07-30',1,'rijalimnida'),
+(2,NULL,'Cimprut',3,'81','kediri','2018-07-30 00:00:00','2018-07-31 00:00:00',2,'Jekardah','KEDIRI',1,1000000,NULL,'2018-07-30','2018-07-30',1,'rijalimnida'),
+(3,NULL,'Sempok',1,'81','Kediri','2018-07-30 00:00:00','2018-07-31 00:00:00',2,'Kediri','Jekardah',1,8000,NULL,'2018-07-30',NULL,1,'rijalimnida'),
+(4,NULL,'Rijal',2,NULL,'kediri','2018-08-01 00:00:00','2018-08-01 00:00:00',2,'Jekardah','Merauke',1,2000,NULL,'2018-07-10',NULL,1,'rijalimnida'),
+(5,NULL,'Kamal',1,'9999999999999','kediri','2018-08-01 00:00:00','2018-08-02 00:00:00',2,'Jekardah','Kediri',1,60000,NULL,'2018-07-31',NULL,1,'rijalimnida'),
+(6,NULL,'Rizla',1,'62817181626718','Ngagel','2018-08-01 14:00:00','2018-08-02 17:00:00',2,'Jekardah','KEDIRI',1,60000,NULL,'2018-08-01',NULL,1,'rijalimnida'),
+(7,NULL,'Kemal',2,'62896152718191','Kediri','2018-08-01 06:00:00','2018-08-02 12:00:00',2,'Kediri','Kediri',1,1000000,NULL,'2018-08-01',NULL,1,'rijalimnida'),
+(8,NULL,'tertretfrr',2,'98797576456436','fgdxhgfjuf','2018-08-01 15:15:00','2018-08-04 15:10:00',2,'fgsdghdf','fdahrdhsgd',1,400000,NULL,'2018-08-01',NULL,1,'rijalimnida');
 
 /*Table structure for table `driver` */
 
@@ -165,7 +165,7 @@ insert  into `driver`(`id`,`name`,`phone_number`,`address`,`status`,`status_sche
 DROP TABLE IF EXISTS `guestbook`;
 
 CREATE TABLE `guestbook` (
-  `id` varchar(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `customer` varchar(100) DEFAULT NULL,
   `phone_number` varchar(15) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
@@ -177,21 +177,12 @@ CREATE TABLE `guestbook` (
   `person_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fkstatus` (`status`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `guestbook` */
 
 insert  into `guestbook`(`id`,`customer`,`phone_number`,`address`,`date_today`,`date_input`,`date_transaksi`,`status`,`id_user`,`person_name`) values 
-('3','hani','9999999999999','surabaya barat',NULL,NULL,'2018-07-26','3','1','rijalimnida'),
-('a1','aa','85432786777','surabaya',NULL,NULL,'2018-07-25',NULL,'1',''),
-('A132','vIKYY','9999999999999','sby',NULL,NULL,'2018-07-28',NULL,'1','rijalimnida'),
-('C14','Cee','9999999999999','Jekardah',NULL,NULL,'2018-07-27','3','1','rijalimnida'),
-('C78','Siapa','6287112010121','Kediri',NULL,NULL,'2018-07-01','3','1','rijalimnida'),
-('f2','fsf','9999999999999','dsfsdf',NULL,NULL,'0000-00-00',NULL,'2','rijalds'),
-('p001','nama','85432786777','surabaya',NULL,NULL,'2018-07-25',NULL,'1','rijal'),
-('SDA001','Si Dia','2222222244444','Surabaya',NULL,NULL,'2018-07-30','0','1','rijalimnida'),
-('T001','Cimprut','9999999999999','Kediri',NULL,NULL,'2018-07-05','3','1','rijalimnida'),
-('Z09','Kamal','62971288153181','Malang',NULL,NULL,'2018-07-27','4','1','rijalimnida');
+(11,'Cimprut','62237284319417','Kediri',NULL,NULL,'2018-08-09','Intro','1','rijalimnida');
 
 /*Table structure for table `maintence` */
 
@@ -251,7 +242,7 @@ DROP TABLE IF EXISTS `record_guestbook`;
 
 CREATE TABLE `record_guestbook` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `id_guestbook` varchar(10) DEFAULT NULL,
+  `id_guestbook` int(10) DEFAULT NULL,
   `date_phone` date DEFAULT NULL,
   `date_today` date DEFAULT NULL,
   `date_input` date DEFAULT NULL,
@@ -260,20 +251,18 @@ CREATE TABLE `record_guestbook` (
   `explanation` varchar(250) DEFAULT NULL,
   `status` varchar(10) DEFAULT NULL,
   `id_user` int(10) DEFAULT NULL,
-  `person_name` int(100) DEFAULT NULL,
+  `person_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fkrecord` (`id_guestbook`),
   KEY `fkrecord2` (`id_user`),
   KEY `fkrecord3` (`status`),
-  CONSTRAINT `fkrecord` FOREIGN KEY (`id_guestbook`) REFERENCES `guestbook` (`id`),
-  CONSTRAINT `fkrecord2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
-  CONSTRAINT `fkrecord3` FOREIGN KEY (`status`) REFERENCES `guestbook` (`status`)
+  KEY `fkguestbook` (`id_guestbook`),
+  CONSTRAINT `fkguestbook` FOREIGN KEY (`id_guestbook`) REFERENCES `guestbook` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `record_guestbook` */
 
 insert  into `record_guestbook`(`id`,`id_guestbook`,`date_phone`,`date_today`,`date_input`,`date_transaksi`,`price`,`explanation`,`status`,`id_user`,`person_name`) values 
-(1,'3','2018-08-08','2018-08-01','2018-08-01','2018-08-01',1,'1','3',1,0);
+(1,NULL,'2018-08-08','2018-08-01','2018-08-01','2018-08-01',1,'1','3',1,'0');
 
 /*Table structure for table `schedule` */
 
