@@ -19,6 +19,7 @@ use kartik\daterange\DateRangePicker;
 /* @var $model frontend\models\Guestbook */
 
 $this->title = $model->id;
+
 $id_guestbook = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Guestbooks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -53,7 +54,7 @@ $model1 = new Recordguestbook();
             'guest',
             'guest_pn',
             'guest_address',
-            // 'date_today',
+            'date_today',
             'date_input',
             'date_transaksi',
             'vehicle',
@@ -82,12 +83,6 @@ $model->person_name=$id == '' ? '' : $users ['username'];
 <div class="row">
         <div class="col-sm-1">
     <?= $form->field($model, 'id')->textInput(['readOnly'=>true]) ?>
-        </div>
-        <div class="col-sm-1">
-    <?= $form->field($model, 'id_user')->textInput(['readOnly' => true]) ?>
-        </div>
-        <div class="col-sm-2">
-    <?= $form->field($model, 'person_name')->textInput(['readOnly' => true]) ?>
         </div>
         <div class="col-sm-3">
     <?= $form->field($model1, 'date_transaksi')->widget(

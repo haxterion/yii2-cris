@@ -118,9 +118,7 @@ $users = ArrayHelper::toarray($user);
     <div class="form-group">
     <?= $form->field($model, 'status')->radioList(array('Intro'=>'Intro','Deal'=>'Deal')); ?>
     </div>
-    <div class="form-group">
-            <?= $form->field($model, 'date_today')->textInput(['maxlength', 'readOnly' => true]) ?>
-    </div>
+   
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

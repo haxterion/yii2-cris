@@ -42,7 +42,7 @@ class Guestbook extends \yii\db\ActiveRecord
         return [
             // [['id'], 'required'],
             [['phone_number'], 'string', 'max' => 100],
-            [['date_input', 'date_transaksi'], 'date', 'format'=>'yyyy-mm-dd'],
+            [['date_input', 'date_transaksi', 'date_today'], 'date', 'format'=>'Y-m-d'],
             [['status'], 'string', 'min' => 1],
             // [['id'], 'string', 'max' => 10],
             [['guest','guest_pn','guest_address','vehicle','origin','destination','explanation','price'], 'string', 'min' =>1],

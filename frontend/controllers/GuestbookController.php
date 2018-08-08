@@ -61,6 +61,11 @@ class GuestbookController extends Controller
         $model = new Guestbook();
         $modelr = new Recordguestbook();
         $modelr->load(Yii::$app->request->post('Recordguestbook'));
+        $model->date_today = date('Y-m-d');
+        $model->id_user = Yii::$app->user->id;
+        $model->person_name = Yii::$app->user->identity->username;
+        $modelr->id_user = Yii::$app->user->id;
+        $modelr->person_name = Yii::$app->user->identity->username;
         // $test = Yii::$app->request->post('Recordguestbook');
         if (Yii::$app->request->post('Recordguestbook')['status'] == !NULL){
 
@@ -76,6 +81,7 @@ class GuestbookController extends Controller
         $modelr->id_guestbook = Yii::$app->request->post('Guestbook')['id'];
         $modelr->save();
 
+        
         $update = Guestbook::findOne(['id', $id]);
         $update->status = Yii::$app->request->post('Recordguestbook')['status'];
         $update->date_transaksi = Yii::$app->request->post('Recordguestbook')['date_transaksi'];
@@ -113,8 +119,7 @@ class GuestbookController extends Controller
         $modelr->load(Yii::$app->request->post('Recordguestbook'));
         
         
-        // $date_input = date(Y-m-d);
-        
+        $model->date_today = date('Y-m-d');
         $model->id_user = Yii::$app->user->id;
         $model->person_name = Yii::$app->user->identity->username;
         $modelr->id_user = Yii::$app->user->id;
