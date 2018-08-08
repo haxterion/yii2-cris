@@ -12,6 +12,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="vehicle-index">
     <?= Html::a('Create Vehicle', ['create'], ['class' => 'btn btn-success']) ?>
+
+    <?= Html::a('Xml', ['xml'], ['class' => 'btn btn-success']) ?>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
