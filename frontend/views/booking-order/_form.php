@@ -11,17 +11,29 @@ use frontend\models\Packet;
 use frontend\models\User;
 use frontend\models\Guestbook;
 use kartik\datetime\DateTimePicker;
-
+use frontend\models\Recordguestbook;
+use kartik\select2\Select2;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\BookingOrder */
 /* @var $form yii\widgets\ActiveForm */
-?>
+?> 
 <?php
 $id = Yii::$app->session->get('__id');
 $user = User::findOne(['id' => $id]);
 $users = ArrayHelper::toarray($user);
 $model->id_user=$id == '' ? '' : $users ['id'];
 $model->person_name=$id == '' ? '' : $users ['username'];
+$idi = Yii::$app->getRequest()->getQueryParam('id');
+$order = Guestbook::findOne(['id', $idi]);
+$model->id_guestbook = $idi;
+$model->address = $order->address;
+$model->date_input = $order->date_input;
+$model->customer = $order->customer;
+$model->cust_phone = $order->phone_number;
+$model->price = $order->price;
+$model->guest_name = $order->guest;
+$model->guest_phone = $order->guest_pn;
+
 ?>
 
 <div class="booking-order-form">
@@ -29,10 +41,10 @@ $model->person_name=$id == '' ? '' : $users ['username'];
     <?php $form = ActiveForm::begin(); ?>
 <div class="row">
         <div class="col-sm-2">
-    <?= $form->field($model, 'id_user')->textInput(['maxlength', 'readOnly' => true]) ?>
+    <?= $form->field($model, 'id_user')->textInput(['maxlength', 'hiddenInput' => true]) ?>
         </div>
          <div class="col-sm-4">
-    <?= $form->field($model, 'person_name')->textInput(['maxlength', 'readOnly' => true]) ?>
+    <?= $form->field($model, 'person_name')->textInput(['maxlength', 'hiddenInput' => true]) ?>
         </div>
     <div class="col-sm-6">
     <?= $form->field($model, 'date_input')->widget(
@@ -49,12 +61,15 @@ $model->person_name=$id == '' ? '' : $users ['username'];
     );?>
         </div>
         <div class="col-sm-2">
-    <?= $form->field($model, 'id_guestbook')->dropDownList(
-        ArrayHelper::map(Guestbook::find()->all(),'id', 'id'),
-        ['prompt'=>'Choose Id Guestbook']
-    ) ?>
+    <?= $form->field($model, 'id_guestbook')->textInput(['maxlength', 'readOnly' => true]) ?>
         </div>
         <div class="col-sm-4">
+    <?= $form->field($model, 'customer')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-4">
+    <?= $form->field($model, 'cust_phone')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-6">
     <?= $form->field($model, 'guest_name')->textInput(['maxlength' => true]) ?>
         </div>
     <div class="col-sm-3">
@@ -92,6 +107,7 @@ $model->person_name=$id == '' ? '' : $users ['username'];
         ArrayHelper::map(Driver::find()->all(),'id','name'),
         ['prompt'=>'Choose Driver']
     ) ?>
+    
     </div>
     <div class="col-sm-6">
     <?= $form->field($model, 'vehicle')->dropDownList(

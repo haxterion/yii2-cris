@@ -44,7 +44,8 @@ class Guestbook extends \yii\db\ActiveRecord
             [['phone_number'], 'string', 'max' => 100],
             [['date_input', 'date_transaksi'], 'date', 'format'=>'yyyy-mm-dd'],
             [['status'], 'string', 'min' => 1],
-            [['id'], 'string', 'max' => 10],
+            // [['id'], 'string', 'max' => 10],
+            [['guest','guest_pn','guest_address','vehicle','origin','destination','explanation','price'], 'string', 'min' =>1],
             [['customer', 'person_name'], 'string', 'max' => 100],
             [['address'], 'string', 'max' => 200],
             [['id_user'], 'string', 'max' => 20],
@@ -63,10 +64,18 @@ class Guestbook extends \yii\db\ActiveRecord
             'customer' => 'Customer',
             'phone_number' => 'Phone Number',
             'address' => 'Address',
-            // 'date_today' => 'Date Today',
+            'guest' => 'Guest',
+            'guest_pn' => 'Guest Phone',
+            'guest_address' => 'Guest Address',
+            'date_today' => 'Date Today',
             'date_input' => 'Date Input',
             'date_transaksi' => 'Date Transaksi',
-            // 'status' => 'Status',
+            'vehicle' => 'Vehicle',
+            'origin' => 'Origin',
+            'destination' => 'Destination',
+            'explanation' => 'Explanation',
+            'price' => 'Price',
+            'status' => 'Status',
             'id_user' => 'Id User',
             'person_name' => 'Person Name',
         ];
@@ -75,7 +84,7 @@ class Guestbook extends \yii\db\ActiveRecord
     public function setIdGuestbook($value){
         $this->id = $value;
     }
-
+    
     public function getIdGuestbook(){
         return $this->id;
     }
