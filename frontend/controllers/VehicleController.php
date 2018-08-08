@@ -124,4 +124,12 @@ class VehicleController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+      public function actionXml()
+   {
+    Yii::$app->response->format = \yii\web\Response::FORMAT_XML;
+    $model = \frontend\models\Vehicle::find()->all();
+    //return $this->render('xml');
+    return $model;
+}
+
 }
