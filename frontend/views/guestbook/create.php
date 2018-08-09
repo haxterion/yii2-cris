@@ -9,8 +9,6 @@ $this->title = 'Create Guestbook';
 $this->params['breadcrumbs'][] = ['label' => 'Guestbooks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<session class="content">
-	<div class="row">
 
 <div class="guestbook-create"><!-- 
     <h1><?= Html::encode($this->title) ?></h1> -->
@@ -22,6 +20,5 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 </div>
-</session>
-
-
+</div>
+</section>

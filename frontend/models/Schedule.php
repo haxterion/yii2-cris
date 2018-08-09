@@ -42,7 +42,7 @@ class Schedule extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_schedule' => 'ID',
+            'id' => 'ID',
             'id_booking' => 'Id Booking',
             'id_vehicle' => 'Id Vehicle',
         ];

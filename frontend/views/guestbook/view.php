@@ -19,7 +19,6 @@ use kartik\daterange\DateRangePicker;
 /* @var $model frontend\models\Guestbook */
 
 $this->title = $model->id;
-
 $id_guestbook = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Guestbooks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -36,10 +35,8 @@ $model1 = new Recordguestbook();
             ],
         ]) ?>
     </p>
-<section class="section">
  <div class="row">
-        <div class="col-xs-3">
-            <div class="box">
+        <div class="col-sm-4">
     <?= DetailView::widget([
         'model' => $model,
         'bootstrap' => true,
@@ -54,21 +51,15 @@ $model1 = new Recordguestbook();
             'guest',
             'guest_pn',
             'guest_address',
-            'date_today',
+            // 'date_today',
             'date_input',
             'date_transaksi',
-            'vehicle',
-            'origin',
-            'destination',
-            'explanation',
-            'price',
             'status',
             'price',
             'id_user',
             'person_name',
         ],
     ]) ?>
-</div>
 </div>
 <?php
 $id = Yii::$app->session->get('__id');
@@ -81,9 +72,13 @@ $model->person_name=$id == '' ? '' : $users ['username'];
     <?php $form = ActiveForm::begin(); ?>
 
 <div class="row">
-        <div class="col-sm-1">
-    <?= $form->field($model, 'id')->textInput(['readOnly'=>true]) ?>
+        <div class="col-sm-3">
+    <?= $form->field($model, 'id_user')->textInput(['readOnly' => true]) ?>
         </div>
+        <div class="col-sm-4">
+    <?= $form->field($model, 'person_name')->textInput(['readOnly' => true]) ?>
+        </div>
+
         <div class="col-sm-3">
     <?= $form->field($model1, 'date_transaksi')->widget(
         DatePicker::className(),[
@@ -98,10 +93,14 @@ $model->person_name=$id == '' ? '' : $users ['username'];
         ]);?>
         </div>
         <div class="col-sm-3">
-    <?= $form->field($model1, 'price')->textInput() ?>
-        </div>
+    <?= $form->field($model, 'id')->textInput(['readOnly'=>true]) ?>
+
+    </div>
         <div class="col-sm-3">
     <?= $form->field($model1, 'status')->radioList(array('intro'=>'Intro','nego'=>'Nego' ,'deal'=>'Deal', 'reject'=>'Reject'))?>
+        </div>
+        <div class="col-sm-3">
+    <?= $form->field($model1, 'price')->textInput() ?>
         </div>
         <div class="col-sm-7">
     <?= $form->field($model1, 'explanation')->textArea(['maxlength' => true]) ?>
@@ -123,9 +122,9 @@ $model->person_name=$id == '' ? '' : $users ['username'];
             <td>ID GuestBook</td>
             <td>Date Transaksi</td>
             <td>Status</td>
+            <td>Person Name</td>
             <td>Price</td>
             <td>Explanation</td>
-            <td>Person Name</td>
         </tr>
     </thead>        
     <tbody>
@@ -135,12 +134,12 @@ $model->person_name=$id == '' ? '' : $users ['username'];
             <td><?= $query['id_guestbook'] ?></td>
             <td><?= $query['date_transaksi'] ?></td>
             <td><?= $query['status'] ?></td>
+            <td><?= $query['person_name'] ?></td>
             <td><?= $query['price'] ?></td>
-            <td><?= $query['explanation'] ?></td>
-            <td><?= $query['person_name'] ?></td>    
+            <td><?= $query['explanation'] ?></td>    
         </tr>
         <?php endforeach;?>
     </tbody>    
 </table>
+
 </div>
-</section>
