@@ -64,19 +64,6 @@ class BookingOrderController extends Controller
      */
     public function actionCreate($id)
     {
-<<<<<<< HEAD
-        $model  = new BookingOrder();
-        $idi = Yii::$app->getRequest()->getQueryParam('id');
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-        $request = Yii::$app->request;
-        $order = Guestbook::findOne(['id', $idi]);
-        $order->status_order = true;
-        $order->save();
-        $order2 = Guestbook::findOne(['id', $idi]);
-        $order2->status_schedule = true;
-        $order2->save();
-        return $this->redirect(['view', 'id' => $model->id]);
-=======
         $model = new BookingOrder();
         $idi = Yii::$app->getRequest()->getQueryParam('id');
         if ($model->load(Yii::$app->request->post())) {
@@ -85,7 +72,6 @@ class BookingOrderController extends Controller
         $order->address = $request->post('Guestbook')['address'];
         $order->save();
             return $this->redirect(['view', 'id' => $model->id]);
->>>>>>> f6ba3f3f45f926ef68dcfaee1defe3a7fb563783
         }
 
         return $this->render('create', [

@@ -50,7 +50,7 @@ class BookingOrder extends \yii\db\ActiveRecord
         return [
             [['packet', 'price', 'id_user','salary'], 'integer'],
             [['name_driver', 'vehicle'], 'string'],
-            [['guest_phone'], 'string'],
+            [['guest_phone','salary'], 'string'],
             [['first_date', 'last_date', 'date_input', 'date_transaksi'], 'safe'],
             [['id_guestbook', 'guest_name'], 'string', 'max' => 200],
             [['address'], 'string', 'max' => 250],
