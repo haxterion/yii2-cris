@@ -41,12 +41,21 @@ class Guestbook extends \yii\db\ActiveRecord
     {
         return [
             // [['id'], 'required'],
+<<<<<<< HEAD
             [['status_order','status_schedule','status_close'], 'integer'],
             [['phone_number'], 'string', 'max' => 100],
             [['date_input', 'date_transaksi', 'date_today'], 'date'],
             [['status'], 'string', 'min' => 1],
             // [['id'], 'string', 'max' => 10],
             [['guest','guest_pn','guest_address','vehicle','origin','destination','explanation','price'], 'string', 'min' =>1],
+=======
+            [['phone_number', 'guest_pn'], 'string', 'max' => 100],
+            [['date_input', 'date_transaksi'], 'date', 'format'=>'yyyy-mm-dd'],
+            [['status'], 'string', 'min' => 1],
+            [['price'], 'integer'],
+            [['guest','guest_address','origin','destination','vehicle','packet'], 'string'],
+            // [['id'], 'string', 'max' => 10],
+>>>>>>> f6ba3f3f45f926ef68dcfaee1defe3a7fb563783
             [['customer', 'person_name'], 'string', 'max' => 100],
             [['address'], 'string', 'max' => 200],
             [['id_user'], 'string', 'max' => 20],
@@ -63,12 +72,23 @@ class Guestbook extends \yii\db\ActiveRecord
         return [
             // 'id' => 'ID',
             'customer' => 'Customer',
-            'phone_number' => 'Phone Number',
             'address' => 'Address',
+<<<<<<< HEAD
             'guest' => 'Guest',
             'guest_pn' => 'Guest Phone',
             'guest_address' => 'Guest Address',
             'date_today' => 'Date Today',
+=======
+            'phone_number' => 'Phone Number',
+            'guest' => 'Guest Name',
+            'guest_pn' => 'Guest Phone',
+            'guest_address' => 'Guest Address',
+            'vehicle' => 'Vehicle',
+            'price' => 'Price',
+            'origin' => 'Origin',
+            'destination' => 'Destination',
+            // 'date_today' => 'Date Today',
+>>>>>>> f6ba3f3f45f926ef68dcfaee1defe3a7fb563783
             'date_input' => 'Date Input',
             'date_transaksi' => 'Date Transaksi',
             'vehicle' => 'Vehicle',

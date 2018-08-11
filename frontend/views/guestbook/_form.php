@@ -26,20 +26,20 @@ $users = ArrayHelper::toarray($user);
 // $model->person_name=$id == '' ? '' : $users ['username'];
 
 ?>
-<div class="col-md-6">
-<div class="box box-primary">
- <div class="box-header with-border">   
+<div class="row">
+    <div class="col-md-6">
+<div class="box">
+<div class="box-header with-border">
 <h3 class="box-title">Customer</h3>
 </div>
-
 <div class="box-body">
     <?php $form = ActiveForm::begin(); ?>
+        <div class="form-group">
+            <?= $form->field($model, 'customer')->textInput(['maxlength' => true]) ?>
+        </div>
      <!-- <div class="col-sm-2">
     <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
     </div> -->
-    <div class="form-group">
-    <?= $form->field($model, 'customer')->textInput(['maxlength' => true]) ?>
-    </div>
     <div class="form-group">
     <?= $form->field($model, 'phone_number')->widget(
         MaskedInput::className(),[
@@ -78,16 +78,41 @@ $users = ArrayHelper::toarray($user);
             ]) ?>
     </div>
     <div class="form-group">
+    <?= $form->field($model, 'address')->textArea(['maxlength' => true]) ?>
+    </div>
+    </div>
+</div>
+</div>
+  
+    <div class="col-md-6">
+<div class="box">
+<div class="box-header with-border">
+<h3 class="box-title">Guest</h3>
+</div>
+<div class="box-body">
+    <div class="form-group">
+            <?= $form->field($model, 'guest')->textInput(['maxlength' => true]) ?>
+        </div>
+     <!-- <div class="col-sm-2">
+    <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
+    </div> -->
+    <div class="form-group">
+    <?= $form->field($model, 'guest_pn')->widget(
+        MaskedInput::className(),[
+            'mask' => '(+99)999-9999-9999-9',
+            'clientOptions' => [
+            'removeMaskOnSubmit' => true,
+            ] 
+            ]) ?>
+    </div>
+    <div class="form-group">
     <?= $form->field($model, 'guest_address')->textArea(['maxlength' => true]) ?>
     </div>
     </div>
-
 </div>
 </div>
 <div class="col-md-12">
-<div class="box box-primary">
- 
-
+<div class="box">
 <div class="box-body">
     <div class="form-group">
     <?= $form->field($model, 'date_transaksi')->widget(DatePicker::classname(), [
@@ -98,45 +123,33 @@ $users = ArrayHelper::toarray($user);
                     'autoclose'=>true
             ]
         ])?>
+    </div>  
+    <div class="form-group">
+    <?= $form->field($model, 'destination')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="form-group">
-            <?= $form->field($model, 'origin')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'origin')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="form-group">
-            <?= $form->field($model, 'destination')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'vehicle')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="form-group">
-            <?= $form->field($model, 'vehicle')->dropDownList(
-        ArrayHelper::map(Vehicle::find()->all(),'id','vehicle_type'),
-        ['prompt'=>'Choose Vehicle']
-    ) ?>
+    <?= $form->field($model, 'packet')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="form-group">
-            <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
-    </div>
-    <div class="form-group">
-             <?= $form->field($model, 'packet')->dropDownList(
-        ArrayHelper::map(Packet::find()->all(),'id','name'),
-        ['prompt'=>'Choose Packet']
-    ) ?>
-    </div>
-    <div class="form-group">
-            <?= $form->field($model, 'explanation')->textArea(['maxlength' => true]) ?>
+    <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="form-group">
     <?= $form->field($model, 'status')->radioList(array('Intro'=>'Intro','Deal'=>'Deal')); ?>
     </div>
-   
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-        
+        <?= Html::submitButton('Save', [
+            'class' => 'btn btn-success']) ?>
     </div>
-    </div>
-    
+</div>
+</div>
+</div>
     <?php ActiveForm::end(); ?>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>

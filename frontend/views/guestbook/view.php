@@ -37,8 +37,12 @@ $model1 = new Recordguestbook();
     </p>
 <section class="section">
  <div class="row">
+<<<<<<< HEAD
         <div class="col-xs-3">
             <div class="box">
+=======
+        <div class="col-sm-4">
+>>>>>>> f6ba3f3f45f926ef68dcfaee1defe3a7fb563783
     <?= DetailView::widget([
         'model' => $model,
         'bootstrap' => true,
@@ -89,6 +93,7 @@ $model->person_name=$id == '' ? '' : $users ['username'];
         <div class="col-sm-2">
     <?= $form->field($model, 'person_name')->textInput(['readOnly' => true]) ?>
         </div>
+
         <div class="col-sm-3">
     <?= $form->field($model1, 'date_transaksi')->widget(
         DatePicker::className(),[
@@ -128,9 +133,15 @@ $model->person_name=$id == '' ? '' : $users ['username'];
             <td>ID GuestBook</td>
             <td>Date Transaksi</td>
             <td>Status</td>
+<<<<<<< HEAD
             <td>Price</td>
             <td>Explanation</td>
             <td>Person Name</td>
+=======
+            <td>Person Name</td>
+            <td>Price</td>
+            <td>Explanation</td>
+>>>>>>> f6ba3f3f45f926ef68dcfaee1defe3a7fb563783
         </tr>
     </thead>        
     <tbody>
@@ -140,12 +151,23 @@ $model->person_name=$id == '' ? '' : $users ['username'];
             <td><?= $query['id_guestbook'] ?></td>
             <td><?= $query['date_transaksi'] ?></td>
             <td><?= $query['status'] ?></td>
+<<<<<<< HEAD
             <td><?= $query['price'] ?></td>
             <td><?= $query['explanation'] ?></td>
             <td><?= $query['person_name'] ?></td>    
+=======
+            <td><?= $query['person_name'] ?></td>
+            <td><?= $query['price'] ?></td>
+            <td><?= $query['explanation'] ?></td>    
+>>>>>>> f6ba3f3f45f926ef68dcfaee1defe3a7fb563783
         </tr>
         <?php endforeach;?>
     </tbody>    
 </table>
+<<<<<<< HEAD
 </div>
 </section>
+=======
+
+</div>
+>>>>>>> f6ba3f3f45f926ef68dcfaee1defe3a7fb563783

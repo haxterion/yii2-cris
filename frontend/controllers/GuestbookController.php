@@ -131,7 +131,11 @@ class GuestbookController extends Controller
             // $model->save();
             // $request = Yii::$app->request;
             $modelr->status = $_POST['Guestbook']['status'];
+<<<<<<< HEAD
             
+=======
+            $modelr->price = $_POST['Guestbook']['price'];
+>>>>>>> f6ba3f3f45f926ef68dcfaee1defe3a7fb563783
             $modelr->date_transaksi = $_POST['Guestbook']['date_transaksi'];
             $modelr->date_input = date('Y-m-d');
             $modelr->date_today = date('Y-m-d');

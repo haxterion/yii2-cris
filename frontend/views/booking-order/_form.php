@@ -13,7 +13,6 @@ use frontend\models\Guestbook;
 use kartik\datetime\DateTimePicker;
 use frontend\models\Recordguestbook;
 use kartik\select2\Select2;
-use wbraganca\dynamicform\DynamicFormWidget;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\BookingOrder */
@@ -42,10 +41,7 @@ $model->guest_phone = $order->guest_pn;
 <div class="box-body">
     <?php $form = ActiveForm::begin(); ?>
 <div class="row">
-        <div class="col-sm-1">
-    <?= $form->field($model, 'id_user')->textInput(['maxlength', 'hiddenInput' => true]) ?>
-        </div>
-         <div class="col-sm-2">
+
     <?= $form->field($model, 'person_name')->textInput(['maxlength', 'hiddenInput' => true]) ?>
         </div>
          <div class="col-sm-2">
@@ -68,7 +64,6 @@ $model->guest_phone = $order->guest_pn;
         ]
     );?>
         </div>
- -->        <div class="col-sm-5">
     <?= $form->field($model, 'guest_name')->textInput(['maxlength' => true]) ?>
         </div>
     <div class="col-sm-3">
@@ -106,6 +101,7 @@ $model->guest_phone = $order->guest_pn;
         ArrayHelper::map(Driver::find()->all(),'id','name'),
         ['prompt'=>'Choose Driver']
     ) ?>
+    
     </div>
      <div class="col-sm-3">
     <?= $form->field($model, 'salary')->textInput() ?>

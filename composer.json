@@ -29,7 +29,11 @@
         "2amigos/yii2-date-picker-widget": "~1.0",
         "kartik-v/yii2-widget-datetimepicker": "*",
         "kartik-v/yii2-grid": "@dev",
+<<<<<<< HEAD
         "wbraganca/yii2-dynamicform": "*"
+=======
+        "kartik-v/yii2-widget-select2": "@dev"
+>>>>>>> f6ba3f3f45f926ef68dcfaee1defe3a7fb563783
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

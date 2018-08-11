@@ -53,7 +53,7 @@ class BookingOrderController extends Controller
     public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($idi),
         ]);
     }
 
@@ -62,8 +62,9 @@ class BookingOrderController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
+<<<<<<< HEAD
         $model  = new BookingOrder();
         $idi = Yii::$app->getRequest()->getQueryParam('id');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -75,6 +76,16 @@ class BookingOrderController extends Controller
         $order2->status_schedule = true;
         $order2->save();
         return $this->redirect(['view', 'id' => $model->id]);
+=======
+        $model = new BookingOrder();
+        $idi = Yii::$app->getRequest()->getQueryParam('id');
+        if ($model->load(Yii::$app->request->post())) {
+            $request = Yii::$app->request;
+        $order = Guestbook::findOne(['id', $idi]);
+        $order->address = $request->post('Guestbook')['address'];
+        $order->save();
+            return $this->redirect(['view', 'id' => $model->id]);
+>>>>>>> f6ba3f3f45f926ef68dcfaee1defe3a7fb563783
         }
 
         return $this->render('create', [
