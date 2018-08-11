@@ -1,6 +1,6 @@
 /*
-SQLyog Professional v12.4.3 (64 bit)
-MySQL - 10.1.30-MariaDB : Database - ojt_yii2
+SQLyog Community v13.0.0 (64 bit)
+MySQL - 10.1.21-MariaDB : Database - ojt_yii2
 *********************************************************************
 */
 
@@ -117,6 +117,8 @@ CREATE TABLE `booking_order` (
   `date_transaksi` date DEFAULT NULL,
   `id_user` int(20) DEFAULT NULL,
   `person_name` varchar(100) DEFAULT NULL,
+  `salary` int(15) DEFAULT NULL,
+  `license_plat` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `packet_fk` (`packet`),
   KEY `fk_driver_schedule` (`name_driver`),
@@ -126,9 +128,18 @@ CREATE TABLE `booking_order` (
   CONSTRAINT `fk_vehicle_schedule` FOREIGN KEY (`vehicle`) REFERENCES `vehicle` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fkguestbook1` FOREIGN KEY (`id_guestbook`) REFERENCES `guestbook` (`id`),
   CONSTRAINT `packet_fk` FOREIGN KEY (`packet`) REFERENCES `packet` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `booking_order` */
+
+insert  into `booking_order`(`id`,`id_guestbook`,`customer`,`cust_phone`,`guest_name`,`name_driver`,`guest_phone`,`address`,`first_date`,`last_date`,`vehicle`,`origin`,`destination`,`packet`,`price`,`date_today`,`date_input`,`date_transaksi`,`id_user`,`person_name`,`salary`,`license_plat`) values 
+(1,61,NULL,NULL,'Viki',NULL,'62812617151723','Kediri',NULL,NULL,NULL,'','',NULL,400000,NULL,NULL,NULL,1,'rijalimnida',NULL,''),
+(2,62,NULL,NULL,'',NULL,'','',NULL,NULL,NULL,'','',NULL,NULL,NULL,NULL,NULL,1,'rijalimnida',NULL,''),
+(3,62,NULL,NULL,'',NULL,'','',NULL,NULL,NULL,'','',NULL,NULL,NULL,NULL,NULL,1,'rijalimnida',NULL,''),
+(4,62,NULL,NULL,'',NULL,'','',NULL,NULL,NULL,'','',NULL,NULL,NULL,NULL,NULL,1,'rijalimnida',NULL,''),
+(5,62,NULL,NULL,'',NULL,'','',NULL,NULL,NULL,'','',NULL,NULL,NULL,NULL,NULL,1,'rijalimnida',NULL,''),
+(6,62,NULL,NULL,'',NULL,'','',NULL,NULL,NULL,'','',NULL,NULL,NULL,NULL,NULL,1,'rijalimnida',NULL,''),
+(7,62,NULL,NULL,'',NULL,'','',NULL,NULL,NULL,'','',NULL,NULL,NULL,NULL,NULL,1,'rijalimnida',NULL,'');
 
 /*Table structure for table `driver` */
 
@@ -143,9 +154,12 @@ CREATE TABLE `driver` (
   `status_schedule` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_status_schedule2` (`status_schedule`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `driver` */
+
+insert  into `driver`(`id`,`name`,`phone_number`,`address`,`status`,`status_schedule`) values 
+(1,'ahmad',9999999999999,'surabaya','internal',NULL);
 
 /*Table structure for table `guestbook` */
 
@@ -168,20 +182,26 @@ CREATE TABLE `guestbook` (
   `packet` varchar(100) DEFAULT NULL,
   `price` int(20) DEFAULT NULL,
   `status` varchar(10) DEFAULT NULL,
+  `status_order` int(11) NOT NULL,
+  `status_schedule` int(11) NOT NULL,
+  `status_close` int(11) NOT NULL,
   `id_user` varchar(20) DEFAULT NULL,
   `person_name` varchar(100) DEFAULT NULL,
   `explanation` text,
   PRIMARY KEY (`id`),
-  KEY `fkstatus` (`status`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
+  KEY `fkstatus` (`status`),
+  KEY `status` (`status_order`),
+  CONSTRAINT `status` FOREIGN KEY (`status_order`) REFERENCES `statusorder` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
 
 /*Data for the table `guestbook` */
 
-insert  into `guestbook`(`id`,`customer`,`phone_number`,`address`,`guest`,`guest_address`,`guest_pn`,`date_today`,`date_input`,`date_transaksi`,`destination`,`origin`,`vehicle`,`packet`,`price`,`status`,`id_user`,`person_name`,`explanation`) values 
-(61,'Rijalul','62861631264124','Kediri','Viki','Jakarta','62812617151723',NULL,NULL,'2018-08-08','Malang','Surabaya','Avanza',NULL,400000,'Intro','1','rijalimnida','ABCD'),
-(62,'','','','','','',NULL,NULL,NULL,'','','',NULL,NULL,'','1','rijalimnida',''),
-(63,'Temee','','','','','',NULL,NULL,NULL,'','','',NULL,NULL,'Intro','1','rijalimnida',''),
-(64,'Cimprut','','','','','','2018-08-08',NULL,NULL,'','','',NULL,NULL,'Intro','1','rijalimnida','');
+insert  into `guestbook`(`id`,`customer`,`phone_number`,`address`,`guest`,`guest_address`,`guest_pn`,`date_today`,`date_input`,`date_transaksi`,`destination`,`origin`,`vehicle`,`packet`,`price`,`status`,`status_order`,`status_schedule`,`status_close`,`id_user`,`person_name`,`explanation`) values 
+(61,'Rijalul','62861631264124','Kediri','Viki','Jakarta','62812617151723','2018-08-08','2018-08-08','2018-08-08','Malang','Surabaya','Avanza',NULL,400000,'Intro',1,1,0,'1','rijalimnida','ABCD'),
+(62,'Rani','62856778998988','Jember','Rani','Jember','62856778998987','2018-08-08','2018-08-08','2018-08-08','Surabaya','Malang','Innova',NULL,400000,'Intro',1,1,0,'1','rijalimnida',''),
+(63,'Toni','62861631264124','Kediri','Toni','Kediri','62861631264124','2018-08-10','2018-08-11','2018-08-11','Surabaya','Malang','Avanza',NULL,400000,'Intro',0,0,0,'1','rijalimnida',''),
+(64,'Cimprut','62861631264124','Blitar','Tama','Solo','62861631264124','2018-08-08','2018-08-10','2018-08-10','Surabaya','Blitar','Avanza',NULL,300000,'Intro',0,0,0,'1','rijalimnida',''),
+(65,'ayu','62856778998987','Surabaya','putri','Malang','62828979897657','2018-08-10','2018-08-11','2018-08-11','Malang','Surabaya','Innova',NULL,400000,'Intro',0,0,0,'1','rijalimnida','');
 
 /*Table structure for table `maintence` */
 
@@ -256,7 +276,7 @@ CREATE TABLE `record_guestbook` (
   KEY `fkrecord3` (`status`),
   KEY `fkguestbook` (`id_guestbook`),
   CONSTRAINT `fkguestbook` FOREIGN KEY (`id_guestbook`) REFERENCES `guestbook` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `record_guestbook` */
 
@@ -270,7 +290,9 @@ insert  into `record_guestbook`(`id`,`id_guestbook`,`date_phone`,`date_today`,`d
 (7,64,NULL,'2018-08-08','2018-08-08',NULL,NULL,'','nego',1,'rijalimnida'),
 (8,64,NULL,'2018-08-08','2018-08-08',NULL,NULL,'','nego',1,'rijalimnida'),
 (9,64,NULL,'2018-08-08','2018-08-08',NULL,NULL,'','nego',1,'rijalimnida'),
-(10,64,NULL,'2018-08-08','2018-08-08',NULL,NULL,'','nego',1,'rijalimnida');
+(10,64,NULL,'2018-08-08','2018-08-08',NULL,NULL,'','nego',1,'rijalimnida'),
+(11,62,NULL,'2018-08-10','2018-08-10','1928-08-10',400000,'gfhghj','nego',NULL,'rijalimnida'),
+(12,65,'2018-08-11','2018-08-11','2018-08-11',NULL,NULL,NULL,'',1,'rijalimnida');
 
 /*Table structure for table `schedule` */
 
@@ -288,6 +310,22 @@ CREATE TABLE `schedule` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `schedule` */
+
+/*Table structure for table `statusorder` */
+
+DROP TABLE IF EXISTS `statusorder`;
+
+CREATE TABLE `statusorder` (
+  `id` int(3) NOT NULL,
+  `des` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `statusorder` */
+
+insert  into `statusorder`(`id`,`des`) values 
+(0,'no'),
+(1,'yes');
 
 /*Table structure for table `user` */
 
@@ -333,7 +371,7 @@ CREATE TABLE `vehicle` (
   KEY `fkdriver` (`id_driver`),
   KEY `fk_status_schedule` (`status_schedule`),
   CONSTRAINT `fkdriver` FOREIGN KEY (`id_driver`) REFERENCES `driver` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `vehicle` */
 
@@ -346,9 +384,22 @@ CREATE TABLE `vehicle_type` (
   `type` varchar(100) DEFAULT NULL,
   `vendor` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `vehicle_type` */
+
+insert  into `vehicle_type`(`id`,`type`,`vendor`) values 
+(1,'avanza','toyota'),
+(2,'rush','toyota'),
+(3,'mobilio','honda'),
+(4,'swift','suzuki'),
+(5,'B-RV','honda'),
+(6,'pajero sport','mitsubishi'),
+(7,'xpander','mitsubishi'),
+(8,'grand livina','nissan'),
+(9,'serena','nissan'),
+(10,'x-trail','nissan'),
+(11,'avanza','toyota');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
