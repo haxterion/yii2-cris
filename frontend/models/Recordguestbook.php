@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use frontend\models\Guestbook;
 use Yii;
 
 /**
@@ -44,7 +45,7 @@ class Recordguestbook extends \yii\db\ActiveRecord
             [['id_guestbook'], 'string', 'max' => 10],
             [['person_name'], 'string', 'max' => 100],
             [['explanation'], 'string', 'max' => 250],
-            [['id_guestbook'], 'exist', 'skipOnError' => true, 'targetClass' => Guestbook::className(), 'targetAttribute' => ['id_guestbook' => 'id']],
+            // [['id_guestbook'], 'exist', 'skipOnError' => true, 'targetClass' => Guestbook::className(), 'targetAttribute' => ['id_guestbook' => 'id']],
         ];
     }
 
@@ -75,7 +76,7 @@ class Recordguestbook extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Guestbook::className(), ['status' => 'id']);
     }
-
+    
     /**
      * @return \yii\db\ActiveQuery
      */

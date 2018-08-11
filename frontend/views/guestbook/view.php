@@ -19,24 +19,26 @@ use kartik\daterange\DateRangePicker;
 /* @var $model frontend\models\Guestbook */
 
 $this->title = $model->id;
+$id_guestbook = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Guestbooks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $model1 = new Recordguestbook();
 ?>
-
 <div class="guestbook-view">
      <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
+        <?= Html::a('Buat Order', ['booking-order/create', 'id' => $model->id], [
+            'class' => 'btn btn-default',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Apakah anda yakin untuk membuat pesanan?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
+<section class="section">
  <div class="row">
-        <div class="col-sm-3">
+        <div class="col-xs-3">
+            <div class="box">
     <?= DetailView::widget([
         'model' => $model,
         'bootstrap' => true,
@@ -48,14 +50,24 @@ $model1 = new Recordguestbook();
             'customer',
             'phone_number',
             'address',
+            'guest',
+            'guest_pn',
+            'guest_address',
             // 'date_today',
             'date_input',
             'date_transaksi',
+            'vehicle',
+            'origin',
+            'destination',
+            'explanation',
+            'price',
             'status',
+            'price',
             'id_user',
             'person_name',
         ],
     ]) ?>
+</div>
 </div>
 <?php
 $id = Yii::$app->session->get('__id');
@@ -68,10 +80,13 @@ $model->person_name=$id == '' ? '' : $users ['username'];
     <?php $form = ActiveForm::begin(); ?>
 
 <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-1">
+    <?= $form->field($model, 'id')->textInput(['readOnly'=>true]) ?>
+        </div>
+        <div class="col-sm-1">
     <?= $form->field($model, 'id_user')->textInput(['readOnly' => true]) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-2">
     <?= $form->field($model, 'person_name')->textInput(['readOnly' => true]) ?>
         </div>
         <div class="col-sm-3">
@@ -88,14 +103,10 @@ $model->person_name=$id == '' ? '' : $users ['username'];
         ]);?>
         </div>
         <div class="col-sm-3">
-    <?= $form->field($model, 'id')->textInput(['readOnly'=>true]) ?>
-
-    </div>
-        <div class="col-sm-3">
-    <?= $form->field($model1, 'status')->radioList(array('intro'=>'Intro','nego'=>'Nego' ,'deal'=>'Deal', 'reject'=>'Reject'))?>
+    <?= $form->field($model1, 'price')->textInput() ?>
         </div>
         <div class="col-sm-3">
-    <?= $form->field($model1, 'price')->textInput() ?>
+    <?= $form->field($model1, 'status')->radioList(array('intro'=>'Intro','nego'=>'Nego' ,'deal'=>'Deal', 'reject'=>'Reject'))?>
         </div>
         <div class="col-sm-7">
     <?= $form->field($model1, 'explanation')->textArea(['maxlength' => true]) ?>
@@ -110,20 +121,31 @@ $model->person_name=$id == '' ? '' : $users ['username'];
     
 </div>
 <div class="col-sm-12">
-<?php
-// $query = (new Query())->from('record_guestbook')->where(['id_guestbook' => 1]);
-// $searchModel = new RecordguestbookSearch();
-// $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-$model = Recordguestbook::find();
-$dataProvider = new ActiveDataProvider([
-    'query'=> $model,
-    'pagination' => [
-        'pageSize' => 10
-    ]
-]);
-?>
-<?= GridView::widget([
-    'dataProvider' => $dataProvider
-])
-?>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>ID GuestBook</td>
+            <td>Date Transaksi</td>
+            <td>Status</td>
+            <td>Price</td>
+            <td>Explanation</td>
+            <td>Person Name</td>
+        </tr>
+    </thead>        
+    <tbody>
+        <?php foreach ($query1 as $query): ?>
+        <tr>
+            <td><?= $query['id'] ?></td>
+            <td><?= $query['id_guestbook'] ?></td>
+            <td><?= $query['date_transaksi'] ?></td>
+            <td><?= $query['status'] ?></td>
+            <td><?= $query['price'] ?></td>
+            <td><?= $query['explanation'] ?></td>
+            <td><?= $query['person_name'] ?></td>    
+        </tr>
+        <?php endforeach;?>
+    </tbody>    
+</table>
 </div>
+</section>

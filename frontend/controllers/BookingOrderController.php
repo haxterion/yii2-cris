@@ -8,7 +8,7 @@ use frontend\models\BookingOrderSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use frontend\models\Guestbook;
 /**
  * BookingOrderController implements the CRUD actions for BookingOrder model.
  */
@@ -64,10 +64,17 @@ class BookingOrderController extends Controller
      */
     public function actionCreate()
     {
-        $model = new BookingOrder();
-
+        $model  = new BookingOrder();
+        $idi = Yii::$app->getRequest()->getQueryParam('id');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $request = Yii::$app->request;
+        $order = Guestbook::findOne(['id', $idi]);
+        $order->status_order = true;
+        $order->save();
+        $order2 = Guestbook::findOne(['id', $idi]);
+        $order2->status_schedule = true;
+        $order2->save();
+        return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [

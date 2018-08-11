@@ -10,11 +10,10 @@ use dosamigos\datepicker\DatePicker;
 
 $this->title = 'Guestbooks';
 $this->params['breadcrumbs'][] = $this->title;
-$data='3';
 ?>
 <div class="guestbook-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<!-- 
+    <h1><?= Html::encode($this->title) ?></h1> -->
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -29,11 +28,6 @@ $data='3';
             ['class' => 'yii\grid\SerialColumn'],
 
             // 'id',
-            'customer',
-            'phone_number',
-            'address',
-            // 'date_today',
-            //'date_input',
             [
                 'attribute' => 'date_transaksi',
                 'value'=> 'date_transaksi',
@@ -47,6 +41,62 @@ $data='3';
                         ]
                 ])
                         ],
+            'customer',
+            'phone_number',
+            'address',
+            [
+                'attribute'=>'status_order',
+                'filter' => ['0'=>'No', '1'=>'Yes'],
+                'format'=>'raw',
+                'value' => function($model, $key, $index)
+                {
+                     if($model->status_order == '1')
+                {
+                    return '<span class="label label-success">Yes</span>';
+                }
+                else
+                {   
+                    return '<span class="label label-danger">No</span>';
+                }
+                },
+            ],
+
+            [
+                'attribute'=>'status_schedule',
+                'filter' => ['0'=>'Pending', '1'=>'Scheduled'],
+                'format'=>'raw',
+                'value' => function($model, $key, $index)
+                {
+                     if($model->status_schedule == '1')
+                {
+                    return '<span class="label label-success">Scheduled</span>';
+                }
+                else
+                {   
+                    return '<span class="label label-danger">Pending</span>';
+                }
+                },
+            ],
+
+            [
+                'attribute'=>'status_close',
+                'filter' => ['0'=>'No', '1'=>'Yes'],
+                'format'=>'raw',
+                'value' => function($model, $key, $index)
+                {
+                     if($model->status_close == '1')
+                {
+                    return '<span class="label label-success">Yes</span>';
+                }
+                else
+                {   
+                    return '<span class="label label-danger">No</span> ';
+                }
+                },
+            ],
+            // 'date_today',
+            //'date_input',
+            
             //'status',
             //'id_user',
             //'person_name',

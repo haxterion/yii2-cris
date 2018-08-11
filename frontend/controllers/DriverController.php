@@ -125,4 +125,11 @@ class DriverController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionXml()
+   {
+    \Yii::$app->response->format = \yii\web\Response::FORMAT_XML;
+    $model = \frontend\models\Driver::find()->all();
+    return $model;
+}
 }

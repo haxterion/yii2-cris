@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="booking-order-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
 
     <p>
         <?php
@@ -65,6 +65,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'date_transaksi',
             'id_user',
             'person_name',
+
+           /* [
+                'class'=> 'yii\grid\ActionColumn',
+                'template'=> '{view}',
+                'buttons'=> [
+                    'view' => function ($url,$model){
+                        return Html::a('<span class="fa fa-eye"></span>',
+                        ['view','id'=>$model->id],['class'=> 'btn btn-info btn-sm']);
+                    }
+                ]
+
+            ],*/
         ],
     ]) ?>
 
